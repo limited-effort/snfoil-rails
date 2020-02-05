@@ -9,14 +9,15 @@ require 'sn_foil/rails/version'
 Gem::Specification.new do |spec|
   spec.name        = 'snfoil-rails'
   spec.version     = SnFoil::Rails::VERSION
-  spec.authors     = ['Matthew Howes']
-  spec.email       = ['howeszy@gmail.com']
+  spec.authors     = ['Matthew Howes', 'Danny Murphy']
+  spec.email       = ['howeszy@gmail.com', 'dmurph24@gmail.com']
   spec.homepage    = 'https://github.com/howeszy/snfoil-rails'
   spec.summary     = 'Additional functionality gem for using SnFoil with Rails'
   spec.license     = 'MIT'
 
   spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
+  spec.add_dependency 'snfoil', '0.1.0'
   spec.add_dependency 'activesupport', '>= 5.1'
   spec.add_dependency 'rails', '~> 5.1.7'
   spec.add_dependency 'fast_jsonapi', '~> 1.0'
