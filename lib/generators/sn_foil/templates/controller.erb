@@ -2,6 +2,6 @@
 
 class <%= model.pluralize.camelcase %>Controller < SnFoil::Rails::Controller::API
   context <%= model.singularize.camelcase %>Context
-  serializer Jsonapi::<%= model.singularize.camelcase %>JsonapiSerializer
-  deserializer Jsonapi::<%= model.singularize.camelcase %>JsonapiDeserializer
+  serializer <%= model.singularize.camelcase %>JsonapiSerializer
+  deserializer <%= model.singularize.camelcase %>JsonapiDeserializer
 end
