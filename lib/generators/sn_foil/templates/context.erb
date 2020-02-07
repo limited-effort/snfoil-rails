@@ -1,0 +1,7 @@
+# frozen_string_literal: true
+
+class <%= model.singularize.camelcase %>Context < SnFoil::Context
+  model <%= model.singularize.camelcase %>
+  searcher V2::<%= model.pluralize.camelcase %>Searcher
+  policy V2::<%= model.singularize.camelcase %>Policy
+end
