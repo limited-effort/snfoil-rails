@@ -1,61 +1,61 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require 'sn_foil/rails/controller/api'
+require 'sn_foil/controller/api'
 
-RSpec.describe SnFoil::Rails::Controller::API do
-  let(:subject) { described_class }
-  let(:instance) { subject.new }
+RSpec.describe SnFoil::Controller::API do
+  let(:controller) { described_class }
+  let(:instance) { controller.new }
   let(:context) { double }
   let(:context_instance) { double }
 
   before do
-    subject.context context
+    controller.context context
     allow(context).to receive(:new).and_return(context_instance)
   end
 
   describe '#self.serializer' do
     let(:serializer) { double }
 
-    before { subject.serializer(serializer) }
+    before { controller.serializer(serializer) }
 
     it 'sets i_serializer' do
-      expect(subject.i_serializer).to eq serializer
+      expect(controller.i_serializer).to eq serializer
     end
 
     it 'manipulates #serializer' do
-      expect(subject.new.serializer).to eq serializer
+      expect(controller.new.serializer).to eq serializer
     end
   end
 
   describe '#self.deserializer' do
     let(:deserializer) { double }
 
-    before { subject.deserializer(deserializer) }
+    before { controller.deserializer(deserializer) }
 
     it 'sets i_deserializer' do
-      expect(subject.i_deserializer).to eq deserializer
+      expect(controller.i_deserializer).to eq deserializer
     end
 
     it 'manipulates #deserializer' do
-      expect(subject.new.deserializer).to eq deserializer
+      expect(controller.new.deserializer).to eq deserializer
     end
   end
 
   describe '#serializer' do
     let(:serializer) { double }
 
-    before { subject.serializer(serializer) }
+    before { controller.serializer(serializer) }
 
     it 'uses the class var i_serializer' do
-      expect(subject.new.serializer).to eq serializer
+      expect(controller.new.serializer).to eq serializer
     end
 
     context 'with options[:serializer] => value' do
       let(:options_serializer) { double }
 
       it 'uses the option' do
-        expect(subject.new.serializer(serializer: options_serializer)).to eq options_serializer
+        expect(controller.new.serializer(serializer: options_serializer)).to eq options_serializer
       end
     end
   end
@@ -63,17 +63,17 @@ RSpec.describe SnFoil::Rails::Controller::API do
   describe '#deserializer' do
     let(:deserializer) { double }
 
-    before { subject.deserializer(deserializer) }
+    before { controller.deserializer(deserializer) }
 
     it 'uses the class var i_deserializer' do
-      expect(subject.new.deserializer).to eq deserializer
+      expect(controller.new.deserializer).to eq deserializer
     end
 
     context 'with options[:deserializer] => value' do
       let(:options_deserializer) { double }
 
       it 'uses the option' do
-        expect(subject.new.deserializer(deserializer: options_deserializer)).to eq options_deserializer
+        expect(controller.new.deserializer(deserializer: options_deserializer)).to eq options_deserializer
       end
     end
   end
@@ -88,7 +88,7 @@ RSpec.describe SnFoil::Rails::Controller::API do
     end
 
     it 'doesn\'t deserialize by default' do
-      subject.deserializer deserializer
+      controller.deserializer deserializer
       expect(deserializer).not_to have_received(:new)
     end
 
@@ -96,7 +96,7 @@ RSpec.describe SnFoil::Rails::Controller::API do
       let(:options) { { deserialize: true, params: { id: 1 } } }
 
       it 'deserializes the params using the deserializer' do
-        subject.deserializer deserializer
+        controller.deserializer deserializer
         output
         expect(deserializer).to have_received(:new).once
       end

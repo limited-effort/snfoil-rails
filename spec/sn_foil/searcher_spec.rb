@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe SnFoil::Rails::Searcher do
+RSpec.describe SnFoil::Searcher do
   subject(:searcher) { Class.new TestSearcherClass }
 
   let(:instance) { searcher.new }
@@ -403,5 +403,5 @@ RSpec.describe SnFoil::Rails::Searcher do
 end
 
 class TestSearcherClass
-  include SnFoil::Rails::Searcher
+  include SnFoil::Searcher
 end

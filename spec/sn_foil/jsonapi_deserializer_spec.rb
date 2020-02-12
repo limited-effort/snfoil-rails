@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe SnFoil::Rails::JsonapiDeserializer do
+RSpec.describe SnFoil::JsonapiDeserializer do
   subject(:deserializer) { TestDeserializer }
 
   let(:request) do
@@ -109,13 +109,13 @@ RSpec.describe SnFoil::Rails::JsonapiDeserializer do
 end
 
 class MiscDeserializer
-  include SnFoil::Rails::JsonapiDeserializer
+  include SnFoil::JsonapiDeserializer
 
   attribute :name
 end
 
 class TestDeserializer
-  include SnFoil::Rails::JsonapiDeserializer
+  include SnFoil::JsonapiDeserializer
 
   attributes :name, :description
   attributes :name

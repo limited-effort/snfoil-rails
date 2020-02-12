@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe SnFoil::Rails::Controller::Concerns::ChangeControllerConcern do
+RSpec.describe SnFoil::Controller::Concerns::ChangeControllerConcern do
   let(:including_class) { Class.new ChangeControllerConcernClass }
   let(:including_instance) { including_class.new }
 
@@ -37,7 +37,7 @@ RSpec.describe SnFoil::Rails::Controller::Concerns::ChangeControllerConcern do
 end
 
 class ChangeControllerConcernClass
-  include SnFoil::Rails::Controller::Concerns::ChangeControllerConcern
+  include SnFoil::Controller::Concerns::ChangeControllerConcern
 
   def render(*_, **_); end
 end

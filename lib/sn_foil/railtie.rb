@@ -3,8 +3,6 @@
 require 'rails/railtie'
 
 module SnFoil
-  module Rails
-    class Railtie < ::Rails::Railtie
-    end
+  class Railtie < ::Rails::Railtie
   end
 end

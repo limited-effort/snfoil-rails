@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe SnFoil::Rails::Controller::Concerns::DestroyControllerConcern do
+RSpec.describe SnFoil::Controller::Concerns::DestroyControllerConcern do
   let(:including_class) { Class.new DestroyControllerConcernClass }
   let(:including_instance) { including_class.new }
   let(:context) { double }
@@ -15,7 +15,7 @@ RSpec.describe SnFoil::Rails::Controller::Concerns::DestroyControllerConcern do
   end
 
   it 'includes SetupControllerConcern' do
-    expect(including_class.ancestors).to include(SnFoil::Rails::Controller::Concerns::SetupControllerConcern)
+    expect(including_class.ancestors).to include(SnFoil::Controller::Concerns::SetupControllerConcern)
   end
 
   describe '#destroy' do
@@ -100,7 +100,7 @@ RSpec.describe SnFoil::Rails::Controller::Concerns::DestroyControllerConcern do
 end
 
 class DestroyControllerConcernClass
-  include SnFoil::Rails::Controller::Concerns::DestroyControllerConcern
+  include SnFoil::Controller::Concerns::DestroyControllerConcern
   def render(*_, **_); end
 
   def params

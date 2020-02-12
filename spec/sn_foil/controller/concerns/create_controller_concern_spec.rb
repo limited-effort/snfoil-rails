@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe SnFoil::Rails::Controller::Concerns::CreateControllerConcern do
+RSpec.describe SnFoil::Controller::Concerns::CreateControllerConcern do
   let(:including_class) { Class.new CreateControllerConcernClass }
   let(:including_instance) { including_class.new }
   let(:context) { double }
@@ -15,11 +15,11 @@ RSpec.describe SnFoil::Rails::Controller::Concerns::CreateControllerConcern do
   end
 
   it 'includes SetupControllerConcern' do
-    expect(including_class.ancestors).to include(SnFoil::Rails::Controller::Concerns::SetupControllerConcern)
+    expect(including_class.ancestors).to include(SnFoil::Controller::Concerns::SetupControllerConcern)
   end
 
   it 'includes ChangeControllerConcern' do
-    expect(including_class.ancestors).to include(SnFoil::Rails::Controller::Concerns::ChangeControllerConcern)
+    expect(including_class.ancestors).to include(SnFoil::Controller::Concerns::ChangeControllerConcern)
   end
 
   describe '#create' do
@@ -86,7 +86,7 @@ RSpec.describe SnFoil::Rails::Controller::Concerns::CreateControllerConcern do
 end
 
 class CreateControllerConcernClass
-  include SnFoil::Rails::Controller::Concerns::CreateControllerConcern
+  include SnFoil::Controller::Concerns::CreateControllerConcern
   def render(*_, **_); end
 
   def params

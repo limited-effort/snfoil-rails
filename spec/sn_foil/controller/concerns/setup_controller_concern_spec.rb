@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe SnFoil::Rails::Controller::Concerns::SetupControllerConcern do
+RSpec.describe SnFoil::Controller::Concerns::SetupControllerConcern do
   let(:including_class) { Class.new SetupControllerConcernClass }
 
   describe '#self.context' do
@@ -195,7 +195,7 @@ RSpec.describe SnFoil::Rails::Controller::Concerns::SetupControllerConcern do
 end
 
 class SetupControllerConcernClass
-  include SnFoil::Rails::Controller::Concerns::SetupControllerConcern
+  include SnFoil::Controller::Concerns::SetupControllerConcern
   def current_user; end
 
   def params; end

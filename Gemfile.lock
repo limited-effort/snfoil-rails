@@ -7,9 +7,9 @@ PATH
       rails (~> 5.1.7)
 
 PATH
-  remote: /home/howesmg/Projects/snfoil
+  remote: /Users/howesmg/Projects/personal/sn-foil
   specs:
-    snfoil (0.1.0)
+    snfoil (0.1.1)
       activesupport (>= 5.1)
       logger (~> 1.0)
       pundit (~> 2.0)

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe SnFoil::Rails::JsonapiSerializer do
+RSpec.describe SnFoil::JsonapiSerializer do
   let(:including_class) { TestSerializer }
 
   it 'includes ChangeControllerConcern' do
@@ -11,5 +11,5 @@ RSpec.describe SnFoil::Rails::JsonapiSerializer do
 end
 
 class TestSerializer
-  include SnFoil::Rails::JsonapiSerializer
+  include SnFoil::JsonapiSerializer
 end

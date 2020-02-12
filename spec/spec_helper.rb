@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'sn_foil'
 require 'sn_foil/rails'
 require 'pry-byebug'
 require_relative 'canary'

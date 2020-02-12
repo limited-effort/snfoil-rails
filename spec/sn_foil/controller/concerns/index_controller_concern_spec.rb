@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe SnFoil::Rails::Controller::Concerns::IndexControllerConcern do
+RSpec.describe SnFoil::Controller::Concerns::IndexControllerConcern do
   let(:including_class) { Class.new IndexControllerConcernClass }
   let(:including_instance) { including_class.new }
   let(:context) { double }
@@ -21,7 +21,7 @@ RSpec.describe SnFoil::Rails::Controller::Concerns::IndexControllerConcern do
   end
 
   it 'includes SetupControllerConcern' do
-    expect(including_class.ancestors).to include(SnFoil::Rails::Controller::Concerns::SetupControllerConcern)
+    expect(including_class.ancestors).to include(SnFoil::Controller::Concerns::SetupControllerConcern)
   end
 
   describe '#index' do
@@ -180,7 +180,7 @@ RSpec.describe SnFoil::Rails::Controller::Concerns::IndexControllerConcern do
 end
 
 class IndexControllerConcernClass
-  include SnFoil::Rails::Controller::Concerns::IndexControllerConcern
+  include SnFoil::Controller::Concerns::IndexControllerConcern
   def render(*_, **_); end
 
   def params

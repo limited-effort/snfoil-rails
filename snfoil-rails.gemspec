@@ -17,10 +17,9 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
-  spec.add_dependency 'snfoil', '0.1.0'
   spec.add_dependency 'activesupport', '>= 5.1'
-  spec.add_dependency 'rails', '~> 5.1.7'
   spec.add_dependency 'fast_jsonapi', '~> 1.0'
+  spec.add_dependency 'rails', '~> 5.1.7'
 
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'pry-byebug', '~> 3.0'
@@ -29,5 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop', '~> 0.76.0'
   spec.add_development_dependency 'rubocop-rails', '~> 2.0'
   spec.add_development_dependency 'rubocop-rspec', '~> 1.36.0'
+  spec.add_development_dependency 'snfoil', '0.2'
   spec.add_development_dependency 'sqlite3'
 end

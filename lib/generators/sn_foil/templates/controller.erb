@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class <%= model.pluralize.camelcase %>Controller < SnFoil::Rails::Controller::API
+class <%= model.pluralize.camelcase %>Controller < SnFoil::Controller::API
   context <%= model.singularize.camelcase %>Context
   serializer <%= model.singularize.camelcase %>JsonapiSerializer
   deserializer <%= model.singularize.camelcase %>JsonapiDeserializer
