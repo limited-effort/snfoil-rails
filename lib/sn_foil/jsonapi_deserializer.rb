@@ -23,6 +23,7 @@ module SnFoil
         @i_attribute_transforms ||= {}
         @i_attribute_transforms[key] = options.merge(deserializer: deserializer, transform_type: :has_one)
       end
+      alias_method :belongs_to, :has_one
 
       def has_many(key, deserializer:, **options) # rubocop:disable Naming/PredicateName
         @i_attribute_transforms ||= {}

@@ -10,7 +10,7 @@ module SnFoil
     included do
       include FastJsonapi::ObjectSerializer
 
-      set_key_transform :underscore
+      set_key_transform :dash
     end
   end
 end
