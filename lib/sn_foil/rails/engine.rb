@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'rails/engine'
+
 module SnFoil
   module Rails
     class Engine < ::Rails::Engine
