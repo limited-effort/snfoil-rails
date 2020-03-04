@@ -38,7 +38,7 @@ module SnFoil
         super(**options.merge(deserialize: true))
       end
 
-      def render_change(model, **_options)
+      def render_change(model, **options)
         if model.errors.empty?
           render json: serializer(**options).new(model, **options).serializable_hash
         else
@@ -59,7 +59,7 @@ module SnFoil
                                           .serializable_hash
       end
 
-      def render_show(model, **_options)
+      def render_show(model, **options)
         render json: serializer(**options).new(model, **options).serializable_hash
       end
 

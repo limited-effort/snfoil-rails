@@ -114,7 +114,7 @@ RSpec.describe SnFoil::Controller::Concerns::IndexControllerConcern do
 
     context 'with options[:params][:page] => value' do
       it 'uses the option value' do
-        expect(including_instance.page({ params: { page: 7 } })).to eq 7
+        expect(including_instance.page(params: { page: 7 })).to eq 7
       end
     end
   end
@@ -126,18 +126,18 @@ RSpec.describe SnFoil::Controller::Concerns::IndexControllerConcern do
 
     context 'with options[:params][:per_page] => value' do
       it 'uses the option value' do
-        expect(including_instance.per_page({ params: { per_page: 50 } })).to eq 50
+        expect(including_instance.per_page(params: { per_page: 50 })).to eq 50
       end
 
       context 'when the value is zero' do
         it 'returns 1000' do
-          expect(including_instance.per_page({ params: { per_page: 0 } })).to eq 1000
+          expect(including_instance.per_page(params: { per_page: 0 })).to eq 1000
         end
       end
 
       context 'when the value is greater than 1000' do
         it 'returns 1000' do
-          expect(including_instance.per_page({ params: { per_page: 9999 } })).to eq 1000
+          expect(including_instance.per_page(params: { per_page: 9999 })).to eq 1000
         end
       end
     end

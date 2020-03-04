@@ -1,12 +1,9 @@
 # frozen_string_literal: true
 
-require 'rails/engine'
-
 module SnFoil
   module Rails
     class Engine < ::Rails::Engine
       require 'sn_foil'
-      require_relative 'version'
       require_relative '../searcher'
       require_relative '../jsonapi_serializer'
       require_relative '../jsonapi_deserializer'

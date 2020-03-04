@@ -12,7 +12,7 @@ class SnFoilGenerator < Rails::Generators::Base
     generate_deserializer
     generate_policy
     generate_context
-    puts 'In order to expose your model, it must be added to the config/routes.rb file'
+    Rails.logger.info 'In order to expose your model, it must be added to the config/routes.rb file'
   end
 
   private

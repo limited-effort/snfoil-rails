@@ -42,6 +42,11 @@ Metrics/MethodLength:
   Exclude:
     - spec/dummy/db/**/*.rb
 
+# ================ Naming ================
+Naming/FileName:
+  Exclude:
+    - lib/snfoil-rails.rb
+
 # ================ RSPEC ================
 
 RSpec/MultipleExpectations:
