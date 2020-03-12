@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    snfoil-rails (0.4.0)
+    snfoil-rails (0.4.3)
       activesupport (>= 5.1)
       fast_jsonapi (~> 1.0)
-      snfoil (~> 0.3)
+      snfoil (~> 0.4)
 
 GEM
   remote: https://rubygems.org/
@@ -144,7 +144,7 @@ GEM
     rubocop-rspec (1.36.0)
       rubocop (>= 0.68.1)
     ruby-progressbar (1.10.1)
-    snfoil (0.3.1)
+    snfoil (0.4.3)
       activesupport (>= 5.1)
       logger (~> 1.0)
       pundit (~> 2.0)

@@ -107,7 +107,7 @@ module SnFoil
     end
 
     def order_block(filtered_scope, params)
-      self.class.i_order_block.call(filtered_scope, params)
+      instance_exec filtered_scope, params, &self.class.i_order_block
     end
 
     def order_block?
