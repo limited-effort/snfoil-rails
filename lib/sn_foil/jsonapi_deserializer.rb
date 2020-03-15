@@ -77,8 +77,8 @@ module SnFoil
     def data_id(attributes, data)
       if data[:id]
         attributes[:id] = data[:id]
-      elsif object[:data][:lid]
-        attributes[:lid] = data[:lid]
+      elsif object[:data][:'local:id']
+        attributes[:lid] = data[:'local:id']
       end
       attributes
     end
@@ -136,14 +136,14 @@ module SnFoil
     end
 
     def lookup_relationship(type:, id: nil, lid: nil, **_opts)
-      raise ::ArguementError, 'missing keyword: id or lid' unless id || lid
+      raise ::ArgumentError, 'missing keyword: id or lid' unless id || lid
 
       included&.find do |x|
         x[:type].eql?(type) &&
           if id
             x[:id].eql?(id)
           elsif lid
-            x[:lid].eql?(lid)
+            x[:'local:id'].eql?(lid)
           end
       end
     end
