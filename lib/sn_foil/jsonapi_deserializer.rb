@@ -77,7 +77,7 @@ module SnFoil
     def data_id(attributes, data)
       if data[:id]
         attributes[:id] = data[:id]
-      elsif object[:data][:'local:id']
+      elsif data[:'local:id']
         attributes[:lid] = data[:'local:id']
       end
       attributes
@@ -117,6 +117,7 @@ module SnFoil
       resource_data = data.dig(:relationships, key, :data)
       return attributes unless resource_data
 
+      resource_data = data_id(resource_data, resource_data)
       attribute_data = lookup_relationship(resource_data)
       relationship_data = { data: attribute_data || resource_data }
       attributes[opts.fetch(:key) { key }] = deserializer.new(relationship_data, **options, included: included).parse
@@ -128,6 +129,7 @@ module SnFoil
       return attributes unless array_data
 
       attributes[opts.fetch(:key) { key }] = array_data.map do |resource_data|
+        resource_data = data_id(resource_data, resource_data)
         attribute_data = lookup_relationship(resource_data)
         relationship_data = { data: attribute_data || resource_data }
         deserializer.new(relationship_data, **options, included: included).parse
@@ -136,7 +138,7 @@ module SnFoil
     end
 
     def lookup_relationship(type:, id: nil, lid: nil, **_opts)
-      raise ::ArgumentError, 'missing keyword: id or lid' unless id || lid
+      raise ::ArgumentError, "missing keyword: id or lid for type: #{type}" unless id || lid
 
       included&.find do |x|
         x[:type].eql?(type) &&
