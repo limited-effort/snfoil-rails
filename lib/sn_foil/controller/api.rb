@@ -42,15 +42,15 @@ module SnFoil
         if model.errors.empty?
           render json: serializer(**options).new(model, **options).serializable_hash
         else
-          render model.errors, status: :unprocessable_entity
+          render json: model.errors, status: :unprocessable_entity
         end
       end
 
       def render_destroy(model, **_options)
         if model.errors.empty?
-          render status: :no_content
+          render json: {}, status: :no_content
         else
-          render model.errors, status: :unprocessable_entity
+          render json: model.errors, status: :unprocessable_entity
         end
       end
 
