@@ -28,7 +28,7 @@ module SnFoil
         end
 
         def current_context(**options)
-          @current_context ||= context(**options).new(context_user)
+          @current_context ||= context(**options).new(context_entity)
         end
 
         protected
@@ -75,7 +75,8 @@ module SnFoil
           options
         end
 
-        def context_user
+        def context_entity
+          return current_entity if defined? current_entity
           return current_user if defined? current_user
         end
       end

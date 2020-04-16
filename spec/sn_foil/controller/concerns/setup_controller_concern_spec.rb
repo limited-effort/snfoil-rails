@@ -46,23 +46,23 @@ RSpec.describe SnFoil::Controller::Concerns::SetupControllerConcern do
       allow(context).to receive(:new)
     end
 
-    context 'when there is no current user' do
-      it 'instantiates the context without a user' do
+    context 'when there is no current entity' do
+      it 'instantiates the context without a entity' do
         including_class_instance.current_context
         expect(context).to have_received(:new).with(nil)
       end
     end
 
-    context 'when there is a current user' do
-      let(:user) { double }
+    context 'when there is a current entity' do
+      let(:entity) { double }
 
       before do
-        allow(including_class_instance).to receive(:current_user).and_return(user)
+        allow(including_class_instance).to receive(:current_entity).and_return(entity)
       end
 
-      it 'instantiates the context without a user' do
+      it 'instantiates the context without a entity' do
         including_class_instance.current_context
-        expect(context).to have_received(:new).with(user)
+        expect(context).to have_received(:new).with(entity)
       end
     end
   end
@@ -196,7 +196,7 @@ end
 
 class SetupControllerConcernClass
   include SnFoil::Controller::Concerns::SetupControllerConcern
-  def current_user; end
+  def current_entity; end
 
   def params; end
 

@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    snfoil-rails (0.4.6)
+    snfoil-rails (0.5.0)
       activesupport (>= 5.1)
       fast_jsonapi (~> 1.0)
-      snfoil (~> 0.4)
+      snfoil (~> 0.5)
 
 GEM
   remote: https://rubygems.org/
@@ -144,7 +144,7 @@ GEM
     rubocop-rspec (1.36.0)
       rubocop (>= 0.68.1)
     ruby-progressbar (1.10.1)
-    snfoil (0.4.3)
+    snfoil (0.5.0)
       activesupport (>= 5.1)
       logger (~> 1.0)
       pundit (~> 2.0)
@@ -158,7 +158,7 @@ GEM
     sqlite3 (1.4.2)
     thor (1.0.1)
     thread_safe (0.3.6)
-    tzinfo (1.2.6)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
     unicode-display_width (1.6.1)
     websocket-driver (0.6.5)
@@ -177,7 +177,6 @@ DEPENDENCIES
   rubocop (~> 0.76.0)
   rubocop-rails (~> 2.0)
   rubocop-rspec (~> 1.36.0)
-  snfoil
   snfoil-rails!
   sqlite3
 
