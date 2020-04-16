@@ -41,7 +41,10 @@ module SnFoil
       def render_change(model, **options)
         if model.errors.empty?
           params
-          render json: serializer(**options).new(model, **options.merge, params: { current_entity: current_entity }).serializable_hash
+          render json: serializer(**options).new(model,
+                                                 **options,
+                                                 params: (options[:controller_params] || options[:params] || {})
+                                                           .merge(current_entity: current_entity)).serializable_hash
         else
           render json: model.errors, status: :unprocessable_entity
         end
@@ -58,13 +61,17 @@ module SnFoil
       def render_index(results, **options)
         render json: serializer(**options).new(paginate(results, **options),
                                                **options,
-                                               params: { current_entity: current_entity },
+                                               params: (options[:controller_params] || options[:params] || {})
+                                                         .merge(current_entity: current_entity),
                                                meta: meta(results, **options))
                                           .serializable_hash
       end
 
       def render_show(model, **options)
-        render json: serializer(**options).new(model, **options, params: { current_entity: current_entity }).serializable_hash
+        render json: serializer(**options).new(model,
+                                               **options,
+                                               params: (options[:controller_params] || options[:params] || {})
+                                                         .merge(current_entity: current_entity)).serializable_hash
       end
 
       private
