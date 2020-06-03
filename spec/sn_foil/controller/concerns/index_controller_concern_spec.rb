@@ -84,8 +84,8 @@ RSpec.describe SnFoil::Controller::Concerns::IndexControllerConcern do
 
       it 'paginates the results' do
         including_instance.render_index(results)
-        expect(results).to have_received(:page)
-        expect(results).to have_received(:per)
+        expect(results).to have_received(:page).twice
+        expect(results).to have_received(:per).twice
       end
 
       it 'renders the results with meta' do

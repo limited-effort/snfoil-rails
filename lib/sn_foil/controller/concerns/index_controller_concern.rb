@@ -50,6 +50,7 @@ module SnFoil
         end
 
         def meta(results, **options)
+          results = paginate(results, **options)
           total_pages = results.respond_to?(:total_pages) ? results.total_pages : nil
           total_count = results.respond_to?(:total_count) ? results.total_count : nil
 
