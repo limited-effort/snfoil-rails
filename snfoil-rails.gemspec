@@ -17,13 +17,13 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir['{lib}/**/*.rb', 'MIT-LICENSE', 'Rakefile', '*.md']
 
-  spec.add_runtime_dependency 'activesupport', '>= 5.1'
-  spec.add_runtime_dependency 'fast_jsonapi', '~> 1.0'
+  spec.add_runtime_dependency 'activesupport', '>= 5.2.4.3'
+  spec.add_runtime_dependency 'jsonapi-serializer', '~> 2.0'
   spec.add_runtime_dependency 'snfoil', '~> 0.5'
 
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'pry-byebug', '~> 3.0'
-  spec.add_development_dependency 'rails', '~> 5.1.7'
+  spec.add_development_dependency 'rails', '5.2.4.3'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec-rails', '~> 3.9'
   spec.add_development_dependency 'rubocop', '~> 0.76.0'
