@@ -2,6 +2,6 @@
 
 module SnFoil
   module Rails
-    VERSION = '0.5.5'
+    VERSION = '0.7.0'
   end
 end
