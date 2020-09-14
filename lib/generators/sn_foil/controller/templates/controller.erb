@@ -1,0 +1,7 @@
+# frozen_string_literal: true
+
+class <%= class_modules %><%= class_name %>Controller < SnFoil::Controller::Base
+  context <%= name.singularize.camelcase %>Context
+  serializer <%= name.singularize.camelcase %>JsonapiSerializer
+  deserializer <%= name.singularize.camelcase %>JsonapiDeserializer
+end
