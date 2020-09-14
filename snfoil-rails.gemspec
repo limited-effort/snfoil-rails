@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.summary     = 'Additional functionality gem for using SnFoil with Rails'
   spec.license     = 'MIT'
 
-  spec.files = Dir['{lib}/**/*.rb', 'MIT-LICENSE', 'Rakefile', '*.md']
+  spec.files = Dir['{lib}/**/*.rb', '{lib}/**/*.erb', 'MIT-LICENSE', 'Rakefile', '*.md']
 
   spec.add_runtime_dependency 'activesupport', '>= 5.2.4.3'
   spec.add_runtime_dependency 'jsonapi-serializer', '~> 2.0'

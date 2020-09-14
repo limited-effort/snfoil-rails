@@ -1,6 +1,8 @@
  # frozen_string_literal: true
 
-class <%= class_modules %><%= class_name %>Context < SnFoil::Context
+class <%= class_modules %><%= class_name %>Context
+  include SnFoil::Context
+
   model <%= class_name %>
   searcher <%= class_name.pluralize %>Searcher
   policy <%= class_name %>Policy
