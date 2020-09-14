@@ -1,8 +1,14 @@
 Description:
-    Explain the generator
+    Creates a SnFoil::Searcher Scaffold
+
+Arguments:
+    model: *required* The name of the model
+
+Options:
+    path: The path the files will be created at. default: app/searcher
 
 Example:
-    rails generate test Thing
+    rails generate sn_foil:searcher User
 
     This will create:
-        what/will/it/create
+        app/searchers/users_searcher.rb

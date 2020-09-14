@@ -1,8 +1,14 @@
 Description:
-    Explain the generator
+    Creates a SnFoil::Context Scaffold
+
+Arguments:
+    model: *required* The name of the model
+
+Options:
+    path: The path the files will be created at. default: app/contexts
 
 Example:
-    rails generate test Thing
+    rails generate sn_foil:context User
 
     This will create:
-        what/will/it/create
+        app/contexts/user_context
