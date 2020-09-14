@@ -44,7 +44,7 @@ module SnFoil
           render json: serializer(**options).new(model,
                                                  **options,
                                                  params: (options[:controller_params] || options[:params] || {})
-                                                           .merge(current_entity: current_entity)).serializable_hash
+                                                           .merge(current_entity: context_entity)).serializable_hash
         else
           render json: model.errors, status: :unprocessable_entity
         end
@@ -62,7 +62,7 @@ module SnFoil
         render json: serializer(**options).new(paginate(results, **options),
                                                **options,
                                                params: (options[:controller_params] || options[:params] || {})
-                                                         .merge(current_entity: current_entity),
+                                                         .merge(current_entity: context_entity),
                                                meta: meta(results, **options))
                                           .serializable_hash
       end
@@ -71,7 +71,7 @@ module SnFoil
         render json: serializer(**options).new(model,
                                                **options,
                                                params: (options[:controller_params] || options[:params] || {})
-                                                         .merge(current_entity: current_entity)).serializable_hash
+                                                         .merge(current_entity: context_entity)).serializable_hash
       end
 
       private
