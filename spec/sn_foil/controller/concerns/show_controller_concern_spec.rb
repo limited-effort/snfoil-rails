@@ -23,7 +23,7 @@ RSpec.describe SnFoil::Controller::Concerns::ShowControllerConcern do
       allow(including_instance).to receive(:setup_show).and_call_original
       allow(including_instance).to receive(:process_show).and_call_original
       allow(including_instance).to receive(:render_show).and_call_original
-      including_instance.show
+      including_instance.show(test: true)
     end
 
     it 'calls setup_show with options hash' do
@@ -53,7 +53,7 @@ RSpec.describe SnFoil::Controller::Concerns::ShowControllerConcern do
   describe '#process_show' do
     before do
       allow(including_instance).to receive(:current_context).and_call_original
-      including_instance.process_show
+      including_instance.process_show(test: true)
     end
 
     it 'calls current context with the options hash' do

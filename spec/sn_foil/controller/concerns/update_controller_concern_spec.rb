@@ -27,7 +27,7 @@ RSpec.describe SnFoil::Controller::Concerns::UpdateControllerConcern do
       allow(including_instance).to receive(:setup_update).and_call_original
       allow(including_instance).to receive(:process_update).and_call_original
       allow(including_instance).to receive(:render_update).and_call_original
-      including_instance.update
+      including_instance.update(test: true)
     end
 
     it 'calls setup_update with options hash' do
@@ -57,7 +57,7 @@ RSpec.describe SnFoil::Controller::Concerns::UpdateControllerConcern do
   describe '#process_update' do
     before do
       allow(including_instance).to receive(:current_context).and_call_original
-      including_instance.process_update
+      including_instance.process_update(test: true)
     end
 
     it 'calls current context with the options hash' do
@@ -76,7 +76,7 @@ RSpec.describe SnFoil::Controller::Concerns::UpdateControllerConcern do
   describe '#render_update' do
     before do
       allow(including_instance).to receive(:render_change)
-      including_instance.render_update(OpenStruct.new)
+      including_instance.render_update(OpenStruct.new, test: true)
     end
 
     it 'calls render_change with model and options hash' do

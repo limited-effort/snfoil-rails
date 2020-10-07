@@ -29,7 +29,7 @@ RSpec.describe SnFoil::Controller::Concerns::IndexControllerConcern do
       allow(including_instance).to receive(:setup_index).and_call_original
       allow(including_instance).to receive(:process_index).and_call_original
       allow(including_instance).to receive(:render_index).and_call_original
-      including_instance.index
+      including_instance.index(test: true)
     end
 
     it 'calls setup_index with options hash' do
@@ -59,7 +59,7 @@ RSpec.describe SnFoil::Controller::Concerns::IndexControllerConcern do
   describe '#process_index' do
     before do
       allow(including_instance).to receive(:current_context).and_call_original
-      including_instance.process_index
+      including_instance.process_index(test: true)
     end
 
     it 'calls current context with the options hash' do

@@ -23,7 +23,7 @@ RSpec.describe SnFoil::Controller::Concerns::DestroyControllerConcern do
       allow(including_instance).to receive(:setup_destroy).and_call_original
       allow(including_instance).to receive(:process_destroy).and_call_original
       allow(including_instance).to receive(:render_destroy).and_call_original
-      including_instance.destroy
+      including_instance.destroy(test: true)
     end
 
     it 'calls setup_destroy with options hash' do
@@ -53,7 +53,7 @@ RSpec.describe SnFoil::Controller::Concerns::DestroyControllerConcern do
   describe '#process_destroy' do
     before do
       allow(including_instance).to receive(:current_context).and_call_original
-      including_instance.process_destroy
+      including_instance.process_destroy(test: true)
     end
 
     it 'calls current context with the options hash' do

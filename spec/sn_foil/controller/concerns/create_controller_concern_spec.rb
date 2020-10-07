@@ -27,7 +27,7 @@ RSpec.describe SnFoil::Controller::Concerns::CreateControllerConcern do
       allow(including_instance).to receive(:setup_create).and_call_original
       allow(including_instance).to receive(:process_create).and_call_original
       allow(including_instance).to receive(:render_create).and_call_original
-      including_instance.create
+      including_instance.create(test: true)
     end
 
     it 'calls setup_create with options hash' do
@@ -57,7 +57,7 @@ RSpec.describe SnFoil::Controller::Concerns::CreateControllerConcern do
   describe '#process_create' do
     before do
       allow(including_instance).to receive(:current_context).and_call_original
-      including_instance.process_create
+      including_instance.process_create(test: true)
     end
 
     it 'calls current context with the options hash' do
@@ -76,7 +76,7 @@ RSpec.describe SnFoil::Controller::Concerns::CreateControllerConcern do
   describe '#render_create' do
     before do
       allow(including_instance).to receive(:render_change)
-      including_instance.render_create(OpenStruct.new)
+      including_instance.render_create(OpenStruct.new, test: true)
     end
 
     it 'calls render_change with model and options hash' do
