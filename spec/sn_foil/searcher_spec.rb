@@ -345,40 +345,6 @@ RSpec.describe SnFoil::Searcher do
       end
     end
 
-    context 'with params value that include \'true\'(String)' do
-      let(:params) { { canary: canary, parameter: 'true' } }
-
-      before do
-        searcher.filter do |scope, params|
-          params[:canary].sing(params)
-          scope
-        end
-      end
-
-      it 'converts the values to true(Boolean)' do
-        query
-        expect(canary.song[3][:data][:parameter]).to be true
-        expect(canary.song[3][:data][:parameter]).not_to eq 'true'
-      end
-    end
-
-    context 'with params value that include \'false\'(String)' do
-      let(:params) { { canary: canary, parameter: 'false' } }
-
-      before do
-        searcher.filter do |scope, params|
-          params[:canary].sing(params)
-          scope
-        end
-      end
-
-      it 'converts the values to false(Boolean)' do
-        query
-        expect(canary.song[3][:data][:parameter]).to be false
-        expect(canary.song[3][:data][:parameter]).not_to eq 'false'
-      end
-    end
-
     it 'calls setup' do
       query
       expect(canary.sung?(:setup)).to be true
