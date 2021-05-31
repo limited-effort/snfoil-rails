@@ -19,7 +19,7 @@ module SnFoil
       @file_name ||= if modules.length.zero?
                        name
                      else
-                       modules.join('/') + '/' + name
+                       "#{modules.join('/')}/#{name}"
                      end
     end
 

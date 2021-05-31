@@ -32,6 +32,7 @@ module SnFoil
     end
 
     attr_reader :object, :included, :options
+
     def initialize(object, included: nil, **options)
       @object = object
       @included = included || object[:included]
@@ -88,11 +89,12 @@ module SnFoil
     end
 
     def apply_attribute_transform(attributes, data, key, transform_type:, **opts)
-      if transform_type == :attribute
+      case transform_type
+      when :attribute
         parse_attribute_transform(attributes, data, key, **opts)
-      elsif transform_type == :has_one
+      when :has_one
         parse_has_one_relationship(attributes, data, key, **opts)
-      elsif transform_type == :has_many
+      when :has_many
         parse_has_many_relationship(attributes, data, key, **opts)
       end
     end
@@ -100,7 +102,7 @@ module SnFoil
     def parse_attribute_transform(attributes, data, key, **opts)
       return attributes unless data.dig(:attributes, key)
 
-      attributes.merge(Hash[opts.fetch(:key) { key }, data[:attributes][key]])
+      attributes.merge({ opts.fetch(:key) { key } => data[:attributes][key] })
     end
 
     def parse_relationships(attributes, data)
@@ -138,7 +140,7 @@ module SnFoil
     end
 
     def lookup_relationship(type:, id: nil, lid: nil, **_opts)
-      raise ::ArgumentError, "missing keyword: id or lid for type: #{type}" unless id || lid
+      check_for_id(id, lid)
 
       included&.find do |x|
         x[:type].eql?(type) &&
@@ -148,6 +150,10 @@ module SnFoil
             x[:'local:id'].eql?(lid)
           end
       end
+    end
+
+    def check_for_id(id, lid)
+      raise ::ArgumentError, "missing keyword: id or lid for type: #{type}" unless id || lid
     end
   end
 end

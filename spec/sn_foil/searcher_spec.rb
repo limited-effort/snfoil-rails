@@ -31,7 +31,7 @@ RSpec.describe SnFoil::Searcher do
 
     context 'with a block' do
       it 'calls the setup block' do
-        expect(query).to match(/\"animals\".\"tribe\" = 'setup_block'/)
+        expect(query).to match(/"animals"."tribe" = 'setup_block'/)
       end
 
       it 'calls setup before filter' do
@@ -52,7 +52,7 @@ RSpec.describe SnFoil::Searcher do
       end
 
       it 'calls the setup method' do
-        expect(query).to match(/\"animals\".\"tribe\" = 'setup_method'/)
+        expect(query).to match(/"animals"."tribe" = 'setup_method'/)
       end
 
       it 'calls setup before filter' do
@@ -157,7 +157,7 @@ RSpec.describe SnFoil::Searcher do
 
     context 'with a block' do
       it 'calls the order block' do
-        expect(query).to match(/\"animals\".\"tribe\" = 'order_block'/)
+        expect(query).to match(/"animals"."tribe" = 'order_block'/)
       end
 
       it 'calls order after filter' do
@@ -178,7 +178,7 @@ RSpec.describe SnFoil::Searcher do
       end
 
       it 'calls the order method' do
-        expect(query).to match(/\"animals\".\"tribe\" = 'order_method'/)
+        expect(query).to match(/"animals"."tribe" = 'order_method'/)
       end
 
       it 'calls order after filter' do
