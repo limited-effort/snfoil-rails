@@ -2,6 +2,7 @@
 
 class Canary
   attr_reader :called_by
+
   def initialize
     @callers = []
   end
@@ -21,6 +22,6 @@ class Canary
   end
 
   def sung?(data)
-    @callers.map { |x| x[:data] }.include?(data)
+    @callers.pluck(:data).include?(data)
   end
 end

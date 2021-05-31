@@ -12,7 +12,7 @@ module SnFoil
       file_name = if modules.length.zero?
                     name
                   else
-                    modules.join('/') + '/' + name
+                    "#{modules.join('/')}/#{name}"
                   end
 
       template('searcher.erb', "#{options[:path]}/#{file_name}_searcher.rb")

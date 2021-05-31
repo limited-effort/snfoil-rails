@@ -9,6 +9,7 @@ require 'sn_foil/rails/version'
 Gem::Specification.new do |spec|
   spec.name        = 'snfoil-rails'
   spec.version     = SnFoil::Rails::VERSION
+  spec.required_ruby_version = '>= 2.5.0'
   spec.authors     = ['Matthew Howes', 'Danny Murphy']
   spec.email       = ['howeszy@gmail.com', 'dmurph24@gmail.com']
   spec.homepage    = 'https://github.com/howeszy/snfoil-rails'
@@ -26,8 +27,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rails', '5.2.4.3'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec-rails', '~> 3.9'
-  spec.add_development_dependency 'rubocop', '~> 0.76.0'
-  spec.add_development_dependency 'rubocop-rails', '~> 2.0'
-  spec.add_development_dependency 'rubocop-rspec', '~> 1.36.0'
+  spec.add_development_dependency 'rubocop', '~> 1.14'
+  spec.add_development_dependency 'rubocop-rails', '~> 2.10'
+  spec.add_development_dependency 'rubocop-rspec', '~> 2.3'
   spec.add_development_dependency 'sqlite3'
 end

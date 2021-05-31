@@ -18,8 +18,8 @@ module SnFoil
         end
       end
 
-      ASC ||= 'ASC'
-      DESC ||= 'DESC'
+      ASC = 'ASC'
+      DESC = 'DESC'
     end
 
     class_methods do
@@ -35,7 +35,7 @@ module SnFoil
         @i_order_by_direction = direction
       end
 
-      def distinct(bool = true)
+      def distinct(bool = true) # rubocop:disable Style/OptionalBooleanParameter reason: class configuration looks better this way
         @i_is_distinct = bool
       end
 
