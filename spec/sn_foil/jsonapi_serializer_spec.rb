@@ -12,4 +12,5 @@ end
 
 class TestSerializer
   include SnFoil::JsonapiSerializer
+  include SnFoil::Configuration::LazyJsonapiSerializer
 end

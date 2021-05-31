@@ -18,6 +18,8 @@ module SnFoil
       require_relative '../controller/concerns/update_controller_concern'
       require_relative '../controller/api'
       require_relative '../controller/base'
+
+      require_relative '../configuration/lazy_jsonapi_serializer'
     end
   end
 end
