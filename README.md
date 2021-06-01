@@ -1,4 +1,4 @@
-# Sn::Foil::Rails
+# SnFoil::Rails
 Short description and motivation.
 
 ## Usage

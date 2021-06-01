@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.5.0'
   spec.authors     = ['Matthew Howes', 'Danny Murphy']
   spec.email       = ['howeszy@gmail.com', 'dmurph24@gmail.com']
-  spec.homepage    = 'https://github.com/howeszy/snfoil-rails'
+  spec.homepage    = 'https://github.com/limited-effort/snfoil-rails'
   spec.summary     = 'Additional functionality gem for using SnFoil with Rails'
   spec.license     = 'MIT'
 
