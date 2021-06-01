@@ -68,7 +68,7 @@ module SnFoil
         def create_if_proc_for_has_relation(if_proc, included_proc)
           if if_proc.present?
             proc do |record, params|
-              FastJsonapi.call_proc(if_proc, record, params) && FastJsonapi.call_proc(included_proc, record, params)
+              FastJsonapi.call_proc(included_proc, record, params) && FastJsonapi.call_proc(if_proc, record, params)
             end
           else
             included_proc

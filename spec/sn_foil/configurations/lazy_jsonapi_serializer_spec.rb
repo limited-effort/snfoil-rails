@@ -2,14 +2,15 @@
 
 require 'rails_helper'
 
-RSpec.describe SnFoil::JsonapiSerializer do
+RSpec.describe SnFoil::Configurations::LazyJsonapiSerializer do
   let(:including_class) { TestSerializer }
 
-  it 'includes FastJsonapi::ObjectSerializer' do
+  it 'includes ChangeControllerConcern' do
     expect(including_class.ancestors).to include(FastJsonapi::ObjectSerializer)
   end
 end
 
-class TestSerializer
+class TestLazySerializer
   include SnFoil::JsonapiSerializer
+  include SnFoil::Configuration::LazyJsonapiSerializer
 end
