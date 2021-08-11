@@ -6,6 +6,8 @@ require 'sn_foil/searcher'
 module SnFoil
   module Searcher
     extend ActiveSupport::Concern
+    ASC = 'ASC'
+    DESC = 'DESC'
 
     included do
       module_eval do
@@ -17,9 +19,6 @@ module SnFoil
           additional_search(filtered_scope, params)
         end
       end
-
-      ASC = 'ASC'
-      DESC = 'DESC'
     end
 
     class_methods do

@@ -1,6 +1,7 @@
 require:
-  - rubocop-rspec
+  - rubocop-performance
   - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
   NewCops: enable
@@ -29,17 +30,18 @@ Layout/EmptyLinesAroundBlockBody:
   Exclude:
     - spec/dummy/db/schema.rb
 
+Layout/LineLength:
+  Max: 150
+
 # ================ LINT ================
 Lint/AmbiguousBlockAssociation:
   Exclude:
     - spec/**/*_spec.rb
-  
+
 Lint/ConstantDefinitionInBlock:
   Enabled: false
 
 # ================ Metics ================
-Metrics/LineLength:
-  Max: 150
 
 Metrics/BlockLength:
   Exclude:
@@ -60,7 +62,7 @@ Naming/FileName:
 RSpec/MultipleExpectations:
   Max: 5
 
-Rspec/NestedGroups:
+RSpec/NestedGroups:
   Max: 5
 
 RSpec/MultipleMemoizedHelpers:

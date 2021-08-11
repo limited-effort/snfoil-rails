@@ -16,7 +16,7 @@ RSpec.describe SnFoil::JsonapiDeserializer do
     end
 
     it 'ignores repeat values' do
-      name_count = TestDeserializer.new(request).attributes.select { |x| x == :name }.count
+      name_count = TestDeserializer.new(request).attributes.count { |x| x == :name }
       expect(name_count).to eq 1
     end
   end

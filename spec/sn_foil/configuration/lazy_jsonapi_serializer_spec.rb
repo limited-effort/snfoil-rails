@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe SnFoil::Configurations::LazyJsonapiSerializer do
+RSpec.describe SnFoil::Configuration::LazyJsonapiSerializer do
   let(:including_class) { TestSerializer }
 
   it 'includes ChangeControllerConcern' do
