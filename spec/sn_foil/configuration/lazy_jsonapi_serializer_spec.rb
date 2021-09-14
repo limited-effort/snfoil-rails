@@ -6,7 +6,7 @@ RSpec.describe SnFoil::Configuration::LazyJsonapiSerializer do
   let(:including_class) { TestSerializer }
 
   it 'includes ChangeControllerConcern' do
-    expect(including_class.ancestors).to include(FastJsonapi::ObjectSerializer)
+    expect(including_class.ancestors).to include(JSONAPI::Serializer)
   end
 end
 

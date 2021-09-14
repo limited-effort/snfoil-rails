@@ -5,8 +5,8 @@ require 'rails_helper'
 RSpec.describe SnFoil::JsonapiSerializer do
   let(:including_class) { TestSerializer }
 
-  it 'includes FastJsonapi::ObjectSerializer' do
-    expect(including_class.ancestors).to include(FastJsonapi::ObjectSerializer)
+  it 'includes JSONAPI::Serializer' do
+    expect(including_class.ancestors).to include(JSONAPI::Serializer)
   end
 end
 

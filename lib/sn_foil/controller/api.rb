@@ -31,11 +31,13 @@ module SnFoil
       end
 
       def setup_create(**options)
-        super(**options.merge(deserialize: true))
+        options[:deserialize] = options[:deserialize].nil? ? true : options[:deserialize]
+        super(**options)
       end
 
       def setup_update(**options)
-        super(**options.merge(deserialize: true))
+        options[:deserialize] = options[:deserialize].nil? ? true : options[:deserialize]
+        super(**options)
       end
 
       def render_change(model, **options)
