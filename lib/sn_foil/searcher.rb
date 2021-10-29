@@ -22,34 +22,35 @@ module SnFoil
     end
 
     class_methods do
-      attr_reader :i_include_params, :i_order_method, :i_order_block, :i_order_by_attr, :i_order_by_direction, :i_is_distinct
+      attr_reader :snfoil_include_params, :snfoil_order_method, :snfoil_order_block,
+                  :snfoil_order_by_attr, :snfoil_order_by_direction, :snfoil_is_distinct
 
       def order(method = nil, &block)
-        @i_order_method = method
-        @i_order_block = block
+        @snfoil_order_method = method
+        @snfoil_order_block = block
       end
 
       def order_by(attr, direction = nil)
-        @i_order_by_attr = attr
-        @i_order_by_direction = direction
+        @snfoil_order_by_attr = attr
+        @snfoil_order_by_direction = direction
       end
 
       def distinct(bool = true) # rubocop:disable Style/OptionalBooleanParameter reason: class configuration looks better this way
-        @i_is_distinct = bool
+        @snfoil_is_distinct = bool
       end
 
       def includes(*array)
-        @i_include_params ||= [] # create new array if none exists
-        @i_include_params |= array # combine unique elements of both arrays
+        @snfoil_include_params ||= [] # create new array if none exists
+        @snfoil_include_params |= array # combine unique elements of both arrays
       end
     end
 
     def distinct?
-      self.class.i_is_distinct || false
+      self.class.snfoil_is_distinct || false
     end
 
     def included_params
-      self.class.i_include_params
+      self.class.snfoil_include_params
     end
 
     def order_by(params = {})
@@ -58,7 +59,7 @@ module SnFoil
         return params[:order_by].to_sym if model.attribute_names.include?(params[:order_by])
       end
 
-      self.class.i_order_by_attr || :id
+      self.class.snfoil_order_by_attr || :id
     end
 
     def order(params = {})
@@ -67,7 +68,7 @@ module SnFoil
         return params[:order] if params[:order].eql?(ASC) || params[:order].eql?(DESC)
       end
 
-      self.class.i_order_by_direction || ASC
+      self.class.snfoil_order_by_direction || ASC
     end
 
     private
@@ -96,19 +97,19 @@ module SnFoil
     end
 
     def order_method(filtered_scope, params)
-      send(self.class.i_order_method, filtered_scope, params)
+      send(self.class.snfoil_order_method, filtered_scope, params)
     end
 
     def order_method?
-      self.class.i_order_method.present?
+      self.class.snfoil_order_method.present?
     end
 
     def order_block(filtered_scope, params)
-      instance_exec filtered_scope, params, &self.class.i_order_block
+      instance_exec filtered_scope, params, &self.class.snfoil_order_block
     end
 
     def order_block?
-      self.class.i_order_block.present?
+      self.class.snfoil_order_block.present?
     end
 
     def apply_distinct(filtered_scope, params)

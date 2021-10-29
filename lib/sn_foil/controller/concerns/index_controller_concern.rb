@@ -24,7 +24,7 @@ module SnFoil
         end
 
         def process_index(**options)
-          current_context(**options).index(options)
+          current_context(**options).index(options)[:object]
         end
 
         def render_index(results, **options)

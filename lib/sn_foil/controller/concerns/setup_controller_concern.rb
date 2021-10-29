@@ -9,15 +9,15 @@ module SnFoil
         extend ActiveSupport::Concern
 
         class_methods do
-          attr_reader :i_context
+          attr_reader :snfoil_context
 
           def context(klass = nil)
-            @i_context = klass
+            @snfoil_context = klass
           end
         end
 
         def context(**options)
-          options[:context] || self.class.i_context
+          options[:context] || self.class.snfoil_context
         end
 
         def setup_options(**options)

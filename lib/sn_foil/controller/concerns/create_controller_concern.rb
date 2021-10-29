@@ -26,7 +26,7 @@ module SnFoil
         end
 
         def process_create(**options)
-          current_context(**options).create(**options)
+          current_context(**options).create(**options)[:object]
         end
 
         def render_create(model, **options)

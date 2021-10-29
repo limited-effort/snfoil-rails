@@ -24,7 +24,7 @@ module SnFoil
         end
 
         def process_show(**options)
-          current_context(**options).show(**options)
+          current_context(**options).show(**options)[:object]
         end
 
         def render_show(model, **_options)

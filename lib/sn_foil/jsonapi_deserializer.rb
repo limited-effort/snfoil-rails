@@ -7,27 +7,35 @@ module SnFoil
     extend ActiveSupport::Concern
 
     class_methods do
-      attr_reader :i_attribute_fields, :i_attribute_transforms
+      attr_reader :snfoil_attribute_fields, :snfoil_attribute_transforms
 
       def attributes(*fields)
-        @i_attribute_fields ||= []
-        @i_attribute_fields |= fields
+        @snfoil_attribute_fields ||= []
+        @snfoil_attribute_fields |= fields
       end
 
       def attribute(key, **options)
-        @i_attribute_transforms ||= {}
-        @i_attribute_transforms[key] = options.merge(transform_type: :attribute)
+        @snfoil_attribute_transforms ||= {}
+        @snfoil_attribute_transforms[key] = options.merge(transform_type: :attribute)
       end
 
       def has_one(key, deserializer:, **options) # rubocop:disable Naming/PredicateName
-        @i_attribute_transforms ||= {}
-        @i_attribute_transforms[key] = options.merge(deserializer: deserializer, transform_type: :has_one)
+        @snfoil_attribute_transforms ||= {}
+        @snfoil_attribute_transforms[key] = options.merge(deserializer: deserializer, transform_type: :has_one)
       end
       alias_method :belongs_to, :has_one
 
       def has_many(key, deserializer:, **options) # rubocop:disable Naming/PredicateName
-        @i_attribute_transforms ||= {}
-        @i_attribute_transforms[key] = options.merge(deserializer: deserializer, transform_type: :has_many)
+        @snfoil_attribute_transforms ||= {}
+        @snfoil_attribute_transforms[key] = options.merge(deserializer: deserializer, transform_type: :has_many)
+      end
+
+      def inherited(subclass)
+        super
+
+        instance_variables.grep(/@snfoil_.+/).each do |i|
+          subclass.instance_variable_set(i, instance_variable_get(i).dup)
+        end
       end
     end
 
@@ -40,11 +48,11 @@ module SnFoil
     end
 
     def attribute_fields
-      self.class.i_attribute_fields || []
+      self.class.snfoil_attribute_fields || []
     end
 
     def attribute_transforms
-      self.class.i_attribute_transforms || {}
+      self.class.snfoil_attribute_transforms || {}
     end
 
     def attributes

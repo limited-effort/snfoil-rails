@@ -26,7 +26,7 @@ module SnFoil
         end
 
         def process_update(**options)
-          current_context(**options).update(**options)
+          current_context(**options).update(**options)[:object]
         end
 
         def render_update(model, **options)

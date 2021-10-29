@@ -24,7 +24,7 @@ module SnFoil
         end
 
         def process_destroy(**options)
-          current_context(**options).destroy(**options)
+          current_context(**options).destroy(**options)[:object]
         end
 
         def render_destroy(model, **_options)
