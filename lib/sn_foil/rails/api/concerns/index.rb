@@ -10,6 +10,9 @@ module SnFoil
         extend ActiveSupport::Concern
 
         included do
+          include SnFoil::Rails::Controller
+          include SnFoil::Rails::ProcessPagination
+
           endpoint :index, with: :index_endpoint
 
           process_index with: :process_pagination

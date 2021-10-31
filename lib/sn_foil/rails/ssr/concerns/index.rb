@@ -11,6 +11,7 @@ module SnFoil
 
         included do
           include SnFoil::Rails::Controller
+          include SnFoil::Rails::ProcessPagination
 
           endpoint :index, with: :index_endpoint
 
