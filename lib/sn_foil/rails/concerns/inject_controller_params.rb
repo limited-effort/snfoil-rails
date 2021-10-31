@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
+require 'active_support/concern'
 
 module SnFoil
   module Rails
     module InjectParams
       extend ActiveSupport::Concern
 
-      def inject_params(**options)
+      def inject_controller_params(**options)
         return options if options[:params]
         return options unless params
 

@@ -1,15 +1,19 @@
+# frozen_string_literal: true
+
+require 'active_support/concern'
 
 module SnFoil
   module Rails
-    module InjectParams
+    module InjectIncludes
       extend ActiveSupport::Concern
 
-      def inject_params(**options)
-        return options if options[:params]
-        return options unless params
+      def inject_includes(**options)
+        return options if options[:include]
+        return options unless options.dig(:params, :include)
 
-        options[:params] = params.to_unsafe_h.deep_symbolize_keys
-        options[:controller_params] = options[:params]
+        options[:include] = options.dig(:params, :include)
+                                   .split(',')
+                                   .map { |item| item.underscore.to_sym }
         options
       end
     end
