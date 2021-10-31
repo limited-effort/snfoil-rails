@@ -5,11 +5,13 @@ require_relative '../concerns/process_pagination'
 
 module SnFoil
   module Rails
-    module API
+    module SSR
       module Index
         extend ActiveSupport::Concern
 
         included do
+          include SnFoil::Rails::Controller
+
           endpoint :index, with: :index_endpoint
 
           process_index with: :process_pagination

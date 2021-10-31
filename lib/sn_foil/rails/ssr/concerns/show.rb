@@ -5,17 +5,17 @@ require_relative '../concerns/process_pagination'
 
 module SnFoil
   module Rails
-    module API
-      module Index
+    module SSR
+      module Show
         extend ActiveSupport::Concern
 
         included do
-          endpoint :index, with: :index_endpoint
+          include SnFoil::Rails::Controller
 
-          process_index with: :process_pagination
+          endpoint :show, with: :show_endpoint
         end
 
-        def index_endpoint(**options)
+        def show_endpoint(**options)
           @object = options[:object]
 
           render options[:controller_action]
