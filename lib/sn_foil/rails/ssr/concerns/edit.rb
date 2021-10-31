@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'active_support/concern'
-require_relative '../concerns/process_pagination'
 
 module SnFoil
   module Rails

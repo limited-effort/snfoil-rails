@@ -1,32 +1,25 @@
 # frozen_string_literal: true
 
 require 'active_support/concern'
-require_relative '../concerns/process_pagination'
-require_relative 'edit'
+require_relative '../../controller'
 
 module SnFoil
   module Rails
     module API
-      module Update
+      module Destroy
         extend ActiveSupport::Concern
 
         included do
-          include SnFoil::Rails::API::Index
+          include SnFoil::Rails::Controller
 
-          endpoint :update, with: :update_endpoint
+          endpoint :destroy, with: :destroy_endpoint
         end
 
-        def update_endpoint(**options)
-          @object = options[:object]
-
-          respond_to do |format|
-            if @object.errors
-              format.html  { render action: 'show' }
-              format.json  { render json: @object.errors, status: :unprocessable_entity }
-            else
-              format.html  { redirect_to(action: :index, notice: 'Successfully Destroted') }
-              format.json  { render status: :no_content, location: :index }
-            end
+        def destroy_endpoint(**options)
+          if options[:object].errors.empty?
+            render json: {}, status: :no_content
+          else
+            render json: options[:object].errors, status: :unprocessable_entity
           end
         end
       end

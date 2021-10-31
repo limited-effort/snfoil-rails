@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 require 'active_support/concern'
-require_relative '../concerns/process_pagination'
-require_relative 'edit'
+require_relative '../../controller'
 
 module SnFoil
   module Rails
@@ -17,16 +16,10 @@ module SnFoil
         end
 
         def update_endpoint(**options)
-          @object = options[:object]
-
-          respond_to do |format|
-            if @object.errors
-              format.html  { render action: 'edit' }
-              format.json  { render json: @object.errors, status: :unprocessable_entity }
-            else
-              format.html  { redirect_to(@object, notice: 'Successfully Updated') }
-              format.json  { render json: @object, status: :ok, location: @object }
-            end
+          if options[:object].errors.empty?
+            render json: serialize(options[:object], **options), status: :ok
+          else
+            render json: options[:object].errors, status: :unprocessable_entity
           end
         end
       end

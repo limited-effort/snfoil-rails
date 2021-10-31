@@ -1,11 +1,6 @@
 # frozen_string_literal: true
 
 require 'active_support/concern'
-require_relative 'concerns/inject_controller_params'
-require_relative 'concerns/inject_deserialized'
-require_relative 'concerns/inject_id'
-require_relative 'concerns/inject_includes'
-require_relative 'concerns/process_context'
 
 module SnFoil
   module Rails
@@ -36,15 +31,13 @@ module SnFoil
           @snfoil_deserializer = klass
         end
 
-        def endpoint(name, with: nil, **options, &block)
+        def endpoint(name, **options, &block)
           (@snfoil_endpoints ||= {})[name] =
-            options.merge(controller_action: name, context_action: options[:context_action] || name,
-                          deserialize: deserialize, method: with, block: block)
+            options.merge(controller_action: name, method: options[:with], block: block)
 
           interval "setup_#{name}"
           interval "process_#{name}"
 
-          define_default_hooks(name)
           define_endpoint_method(name)
         end
       end
@@ -57,14 +50,6 @@ module SnFoil
       protected
 
       class_methods do
-        def define_default_hooks(name)
-          send("setup_#{name}", :inject_controller_params)
-          send("setup_#{name}", :inject_deserialized_params)
-          send("setup_#{name}", :inject_id)
-          send("setup_#{name}", :inject_includes)
-          send("process_#{name}", :process_context)
-        end
-
         def define_endpoint_method(name)
           define_method(name) do |**options|
             options = options.merge this.class.snfoil_endpoints[name]

@@ -2,6 +2,7 @@
 
 require 'active_support/concern'
 require_relative '../concerns/process_pagination'
+require_relative '../../controller'
 
 module SnFoil
   module Rails
@@ -19,9 +20,7 @@ module SnFoil
         end
 
         def index_endpoint(**options)
-          @object = options[:object]
-
-          render options[:controller_action]
+          render json: serialize(options[:object], **options)
         end
       end
     end
