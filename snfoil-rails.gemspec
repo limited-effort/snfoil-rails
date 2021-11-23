@@ -3,7 +3,7 @@
 $LOAD_PATH.push File.expand_path('lib', __dir__)
 
 # Maintain your gem's version:
-require 'sn_foil/rails/version'
+require 'snfoil/rails/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
@@ -23,15 +23,16 @@ Gem::Specification.new do |spec|
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
-  spec.files = Dir.chdir(File.expand_path(__dir__)) do
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{\A(?:test|spec|features)/}) }
-  end
+  ignore_list = %r{\A(?:test/|spec/|bin/|features/|Rakefile|\.\w)}
+  Dir.chdir(File.expand_path(__dir__)) { `git ls-files -z`.split("\x0").reject { |f| f.match(ignore_list) } }
 
   spec.add_runtime_dependency 'activesupport', '>= 5.2.6'
-  spec.add_runtime_dependency 'jsonapi-serializer', '~> 2.2'
-  spec.add_runtime_dependency 'snfoil', '~> 0.9'
+  spec.add_runtime_dependency 'snfoil', '~> 0.10'
+  spec.add_runtime_dependency 'snfoil-controller', '~> 0.10'
 
   spec.add_development_dependency 'bundler', '~> 2.2'
+  spec.add_development_dependency 'database_cleaner-active_record'
+  spec.add_development_dependency 'oj'
   spec.add_development_dependency 'pry-byebug', '~> 3.9'
   spec.add_development_dependency 'rails', '5.2.6'
   spec.add_development_dependency 'rake', '~> 13.0'

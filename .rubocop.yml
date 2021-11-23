@@ -59,11 +59,17 @@ Naming/FileName:
 
 # ================ RSPEC ================
 
-RSpec/MultipleExpectations:
-  Max: 5
+RSpec/FilePath:
+  CustomTransform:
+    SnFoil: snfoil
+    CRUD: crud
+    API: api
 
-RSpec/NestedGroups:
+RSpec/MultipleExpectations:
   Max: 5
 
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5

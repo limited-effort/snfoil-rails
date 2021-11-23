@@ -5,7 +5,7 @@ require_relative 'boot'
 require 'rails/all'
 
 Bundler.require(*Rails.groups)
-require 'sn_foil/rails'
+require 'snfoil/rails'
 
 module Dummy
   class Application < Rails::Application

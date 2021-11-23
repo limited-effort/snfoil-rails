@@ -1,0 +1,14 @@
+Description:
+    Creates a SnFoil::Policy Scaffold
+
+Arguments:
+    model: *required* The name of the model
+
+Options:
+    path: The path the files will be created at. default: app/policies
+
+Example:
+    rails generate snfoil:policy User
+
+    This will create:
+        app/policies/user_policy.rb
