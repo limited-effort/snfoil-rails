@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.describe SnFoil::Searcher do
-  subject(:searcher) { Class.new TestSearcherClass }
+RSpec.describe SnFoil::Rails::Searcher do
+  subject(:searcher) { Class.new TestSearcherClass.clone }
 
   let(:instance) { searcher.new }
   let(:params) { {} }
@@ -12,55 +12,6 @@ RSpec.describe SnFoil::Searcher do
 
   before do
     searcher.model(Animal)
-  end
-
-  describe '#self.setup' do
-    let(:params) { { canary: canary } }
-
-    before do
-      searcher.filter do |scope, params|
-        params[:canary].sing(:filter_block)
-        scope.where(family: 'filter')
-      end
-
-      searcher.setup do |scope, params|
-        params[:canary].sing(:setup_block)
-        scope.where(tribe: 'setup_block')
-      end
-    end
-
-    context 'with a block' do
-      it 'calls the setup block' do
-        expect(query).to match(/"animals"."tribe" = 'setup_block'/)
-      end
-
-      it 'calls setup before filter' do
-        query
-        expect(canary.sing[0][:data]).to eq :setup_block
-        expect(canary.sing[1][:data]).to eq :filter_block
-      end
-    end
-
-    context 'with a method' do
-      before do
-        searcher.define_method(:setup_method) do |scope, params|
-          params[:canary].sing(:setup_method)
-          scope.where(tribe: 'setup_method')
-        end
-
-        searcher.setup(:setup_method)
-      end
-
-      it 'calls the setup method' do
-        expect(query).to match(/"animals"."tribe" = 'setup_method'/)
-      end
-
-      it 'calls setup before filter' do
-        query
-        expect(canary.sing[0][:data]).to eq :setup_method
-        expect(canary.sing[1][:data]).to eq :filter_block
-      end
-    end
   end
 
   # Making sure base gem works
@@ -96,8 +47,8 @@ RSpec.describe SnFoil::Searcher do
         searcher.distinct true
       end
 
-      it 'sets distinct? to true' do
-        expect(instance.distinct?).to be true
+      it 'sets snfoil_is_distinct to true' do
+        expect(searcher.snfoil_is_distinct).to be true
       end
 
       it 'distincts the query' do
@@ -106,8 +57,8 @@ RSpec.describe SnFoil::Searcher do
     end
 
     context 'with args[0] => false' do
-      it 'sets distinct? to false' do
-        expect(instance.distinct?).to be false
+      it 'sets snfoil_is_distinct to false' do
+        expect(searcher.snfoil_is_distinct).to be_falsey
       end
 
       it 'doesn\'t distinct the query' do
@@ -117,8 +68,8 @@ RSpec.describe SnFoil::Searcher do
   end
 
   describe '#self.includes' do
-    it 'sets included_params to nil by default' do
-      expect(instance.included_params).to be_nil
+    it 'sets snfoil_include_params to nil by default' do
+      expect(searcher.snfoil_include_params).to be_nil
     end
 
     it 'does not alter the query by default' do
@@ -131,7 +82,7 @@ RSpec.describe SnFoil::Searcher do
       end
 
       it 'populates includes' do
-        expect(instance.included_params).to eq([:person])
+        expect(searcher.snfoil_include_params).to eq([:person])
       end
 
       it 'alters the query to join' do
@@ -219,14 +170,14 @@ RSpec.describe SnFoil::Searcher do
     end
   end
 
-  describe '#distinct?' do
+  describe '#snfoil_is_distinct' do
     it 'defaults to false' do
-      expect(instance.distinct?).to be false
+      expect(searcher.snfoil_is_distinct).to be_falsey
     end
 
     it 'gets set by #self.distinct' do
       searcher.distinct true
-      expect(instance.distinct?).to be true
+      expect(searcher.snfoil_is_distinct).to be true
     end
   end
 
@@ -324,7 +275,7 @@ RSpec.describe SnFoil::Searcher do
     before do
       searcher.distinct
 
-      searcher.setup do |scope, params|
+      searcher.filter do |scope, params|
         params[:canary].sing(:setup)
         scope
       end
@@ -345,9 +296,9 @@ RSpec.describe SnFoil::Searcher do
       end
     end
 
-    it 'calls setup' do
+    it 'calls filters in order' do
       query
-      expect(canary.sung?(:setup)).to be true
+      expect(canary.song.first[:data]).to eq :setup
     end
 
     it 'calls all filters' do
@@ -369,5 +320,5 @@ RSpec.describe SnFoil::Searcher do
 end
 
 class TestSearcherClass
-  include SnFoil::Searcher
+  include SnFoil::Rails::Searcher
 end

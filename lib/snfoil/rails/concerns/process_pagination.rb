@@ -4,7 +4,7 @@ require 'active_support/concern'
 
 module SnFoil
   module Rails
-    module ProcessContext
+    module ProcessPagination
       extend ActiveSupport::Concern
 
       def paginate(results, **options)

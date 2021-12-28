@@ -4,11 +4,14 @@ module SnFoil
   module Rails
     class Engine < ::Rails::Engine
       require 'snfoil'
-      require_relative '../controller'
-      require_relative '../jsonapi_deserializer'
-      require_relative '../jsonapi_serializer'
-      require_relative '../searcher'
-      require_relative 'basic_controller'
+      require_relative 'searcher'
+
+      require_relative 'api/create'
+      require_relative 'api/destroy'
+      require_relative 'api/index'
+      require_relative 'api/show'
+      require_relative 'api/update'
+      require_relative 'api_controller'
     end
   end
 end

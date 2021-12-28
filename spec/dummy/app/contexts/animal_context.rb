@@ -1,0 +1,17 @@
+# frozen_string_literal: true
+
+class AnimalContext
+  include SnFoil::CRUD::Context
+
+  model Animal
+  searcher AnimalSearcher
+  policy AnimalPolicy
+
+  before_create with: :sing
+  
+  def sing(**options)
+    options[:canary].sing(options) if options[:canary]
+
+    options
+  end
+end

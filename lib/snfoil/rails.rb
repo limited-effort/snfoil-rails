@@ -6,10 +6,14 @@ module SnFoil
       require 'snfoil/rails/engine'
     else
       require 'snfoil'
-      require_relative 'controller'
-      require_relative 'jsonapi_serializer'
-      require_relative 'jsonapi_deserializer'
-      require_relative 'searcher'
+      require_relative 'rails/searcher'
+
+      require_relative 'rails/api/create'
+      require_relative 'rails/api/destroy'
+      require_relative 'rails/api/index'
+      require_relative 'rails/api/show'
+      require_relative 'rails/api/update'
+      require_relative 'rails/api_controller'
     end
   end
 end
