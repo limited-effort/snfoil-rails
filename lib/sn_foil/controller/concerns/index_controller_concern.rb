@@ -24,11 +24,11 @@ module SnFoil
         end
 
         def process_index(**options)
-          current_context(**options).index(options)
+          current_context(**options).index(**options)
         end
 
         def render_index(results, **options)
-          render paginate(results, **options), meta: meta(results, options)
+          render paginate(results, **options), meta: meta(results, **options)
         end
 
         def paginate(results, **options)

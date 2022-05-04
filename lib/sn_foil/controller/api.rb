@@ -27,7 +27,7 @@ module SnFoil
       end
 
       def setup_options(**options)
-        inject_deserialized_params(super)
+        inject_deserialized_params(**super)
       end
 
       def setup_create(**options)
