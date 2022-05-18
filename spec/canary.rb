@@ -22,6 +22,6 @@ class Canary
   end
 
   def sung?(data)
-    @callers.pluck(:data).include?(data)
+    @callers.map { |x| x[:data] }.include?(data) # rubocop:disable Rails/Pluck
   end
 end
