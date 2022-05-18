@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'factory_bot', '~> 6.0'
   spec.add_development_dependency 'fasterer', '~> 0.10.0'
   spec.add_development_dependency 'kaminari'
+  spec.add_development_dependency 'net-smtp'
   spec.add_development_dependency 'oj'
   spec.add_development_dependency 'pry-byebug', '~> 3.9'
   spec.add_development_dependency 'puma'
