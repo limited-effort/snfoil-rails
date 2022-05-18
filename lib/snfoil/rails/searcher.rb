@@ -91,14 +91,22 @@ module SnFoil
       end
 
       def apply_order(filtered_scope, params)
-        return order_method(filtered_scope, params) if self.class.snfoil_order_method.present?
-        return order_block(filtered_scope, params) if self.class.snfoil_order_block.present?
+        return order_method(filtered_scope, params) if order_method_present?
+        return order_block(filtered_scope, params) if order_block_present?
 
         if params[:order_by].blank? && params[:order].blank?
           filtered_scope.order(order_by => order)
         else
           filtered_scope.order(order_by(params) => order(params))
         end
+      end
+
+      def order_method_present?
+        self.class.snfoil_order_method.present?
+      end
+
+      def order_block_present?
+        self.class.snfoil_order_block.present?
       end
 
       def order_method(filtered_scope, params)
