@@ -66,9 +66,8 @@ RSpec.describe Api::AnimalsController, type: :controller do
     let(:animal) { create(:animal) }
 
     it 'updates the object' do
-      expect do
-        put :update, params: { id: animal.id, animal: { name: 'Alex Lifeson' } }
-      end.to change(animal.reload, :name).from(animal.name).to('Alex Lifeson')
+      put :update, params: { id: animal.id, animal: { name: 'Alex Lifeson' } }
+      expect(animal.reload.name).to eq('Alex Lifeson')
     end
 
     it 'responds with serialized data' do
