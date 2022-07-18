@@ -89,7 +89,7 @@ RSpec.describe Api::AnimalsController, type: :controller do
 
     it 'responds with 204' do
       delete :destroy, params: { id: animal.id }
-      expect(response).to have_http_status(204)
+      expect(response).to have_http_status(:no_content )
     end
   end
 end
