@@ -8,6 +8,7 @@ class AnimalContext
   policy AnimalPolicy
 
   before_create with: :sing
+  after_index with: :sing
 
   def sing(**options)
     options[:canary]&.sing(options)

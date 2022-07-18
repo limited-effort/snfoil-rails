@@ -16,7 +16,7 @@
 
 require_relative '../concerns/inject_id'
 require_relative '../concerns/inject_request_params'
-require_relative '../concerns/process_context'
+require_relative '../concerns/inject_request_id'
 require 'snfoil/controller'
 
 module SnFoil
@@ -28,16 +28,17 @@ module SnFoil
         included do
           include SnFoil::Controller
 
+          include InjectRequestId
           include InjectId
           include InjectRequestParams
-          include ProcessContext
 
           endpoint :destroy, with: :render_destroy
 
+          setup_destroy with: :inject_request_id
           setup_destroy with: :inject_request_params
           setup_destroy with: :inject_id
 
-          process_destroy with: :process_context
+          process_destroy with: :run_context
 
           def render_destroy(**options)
             if options[:object].errors.empty?

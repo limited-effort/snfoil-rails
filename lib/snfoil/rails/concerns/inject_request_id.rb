@@ -18,11 +18,13 @@ require 'active_support/concern'
 
 module SnFoil
   module Rails
-    module ProcessContext
+    module InjectRequestId
       extend ActiveSupport::Concern
 
-      def process_context(**options)
-        run_context(**options)
+      def inject_request_id(**options)
+        options[:request_id] = request.request_id
+
+        options
       end
     end
   end

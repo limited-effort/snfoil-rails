@@ -16,7 +16,7 @@
 
 require_relative '../concerns/inject_deserialized'
 require_relative '../concerns/inject_request_params'
-require_relative '../concerns/process_context'
+require_relative '../concerns/inject_request_id'
 require 'snfoil/controller'
 
 module SnFoil
@@ -28,18 +28,19 @@ module SnFoil
         included do
           include SnFoil::Controller
 
+          include InjectRequestId
           include InjectDeserialized
           include InjectInclude
           include InjectRequestParams
-          include ProcessContext
 
           endpoint :create, with: :render_create
 
+          setup_create with: :inject_request_id
           setup_create with: :inject_request_params
           setup_create with: :inject_deserialized
           setup_create with: :inject_include
 
-          process_create with: :process_context
+          process_create with: :run_context
 
           def render_create(**options)
             if options[:object].errors.empty?

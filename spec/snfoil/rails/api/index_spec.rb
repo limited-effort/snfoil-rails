@@ -19,8 +19,8 @@ RSpec.describe SnFoil::Rails::API::Index do
     expect(including_class.ancestors).to include SnFoil::Rails::InjectRequestParams
   end
 
-  it 'includes ProcessContext' do
-    expect(including_class.ancestors).to include SnFoil::Rails::ProcessContext
+  it 'includes InjectRequestId' do
+    expect(including_class.ancestors).to include SnFoil::Rails::InjectRequestId
   end
 
   it 'includes ProcessPagination' do
@@ -41,19 +41,14 @@ RSpec.describe SnFoil::Rails::API::Index do
     expect(hooks).to include :inject_request_params
   end
 
+  it 'adds #inject_request_id at setup' do
+    hooks = including_class.snfoil_setup_index_hooks.pluck(:method)
+    expect(hooks).to include :inject_request_id
+  end
+
   it 'adds #inject_include at setup' do
     hooks = including_class.snfoil_setup_index_hooks.pluck(:method)
     expect(hooks).to include :inject_include
-  end
-
-  it 'adds #process_context at process' do
-    hooks = including_class.snfoil_process_index_hooks.pluck(:method)
-    expect(hooks).to include :process_context
-  end
-
-  it 'adds #process_pagination at process' do
-    hooks = including_class.snfoil_process_index_hooks.pluck(:method)
-    expect(hooks).to include :process_pagination
   end
 end
 

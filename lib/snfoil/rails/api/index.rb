@@ -16,7 +16,7 @@
 
 require_relative '../concerns/inject_include'
 require_relative '../concerns/inject_request_params'
-require_relative '../concerns/process_context'
+require_relative '../concerns/inject_request_id'
 require_relative '../concerns/process_pagination'
 require 'snfoil/controller'
 
@@ -29,17 +29,18 @@ module SnFoil
         included do
           include SnFoil::Controller
 
+          include InjectRequestId
           include InjectInclude
           include InjectRequestParams
-          include ProcessContext
           include ProcessPagination
 
           endpoint :index, with: :render_index
 
+          setup_index with: :inject_request_id
           setup_index with: :inject_request_params
           setup_index with: :inject_include
 
-          process_index with: :process_context
+          process_index with: :run_context
           process_index with: :process_pagination
 
           def render_index(**options)

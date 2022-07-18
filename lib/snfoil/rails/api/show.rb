@@ -17,7 +17,7 @@
 require_relative '../concerns/inject_id'
 require_relative '../concerns/inject_include'
 require_relative '../concerns/inject_request_params'
-require_relative '../concerns/process_context'
+require_relative '../concerns/inject_request_id'
 require 'snfoil/controller'
 
 module SnFoil
@@ -29,18 +29,19 @@ module SnFoil
         included do
           include SnFoil::Controller
 
+          include InjectRequestId
           include InjectId
           include InjectInclude
           include InjectRequestParams
-          include ProcessContext
 
           endpoint :show, with: :render_show
 
+          setup_show with: :inject_request_id
           setup_show with: :inject_request_params
           setup_show with: :inject_id
           setup_show with: :inject_include
 
-          process_show with: :process_context
+          process_show with: :run_context
 
           def render_show(**options)
             render json: serialize(options[:object], **options), status: :ok

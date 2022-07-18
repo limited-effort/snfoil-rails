@@ -23,12 +23,12 @@ RSpec.describe SnFoil::Rails::API::Update do
     expect(including_class.ancestors).to include SnFoil::Rails::InjectRequestParams
   end
 
-  it 'includes InjectId' do
-    expect(including_class.ancestors).to include SnFoil::Rails::InjectId
+  it 'includes InjectRequestId' do
+    expect(including_class.ancestors).to include SnFoil::Rails::InjectRequestId
   end
 
-  it 'includes ProcessContext' do
-    expect(including_class.ancestors).to include SnFoil::Rails::ProcessContext
+  it 'includes InjectId' do
+    expect(including_class.ancestors).to include SnFoil::Rails::InjectId
   end
 
   it 'sets up #update endpoint with #render_update as render method' do
@@ -45,6 +45,11 @@ RSpec.describe SnFoil::Rails::API::Update do
     expect(hooks).to include :inject_request_params
   end
 
+  it 'adds #inject_request_id at setup' do
+    hooks = including_class.snfoil_setup_update_hooks.pluck(:method)
+    expect(hooks).to include :inject_request_id
+  end
+
   it 'adds #inject_deserialized at setup' do
     hooks = including_class.snfoil_setup_update_hooks.pluck(:method)
     expect(hooks).to include :inject_deserialized
@@ -58,11 +63,6 @@ RSpec.describe SnFoil::Rails::API::Update do
   it 'adds #inject_id at setup' do
     hooks = including_class.snfoil_setup_update_hooks.pluck(:method)
     expect(hooks).to include :inject_id
-  end
-
-  it 'adds #process_context at process' do
-    hooks = including_class.snfoil_process_update_hooks.pluck(:method)
-    expect(hooks).to include :process_context
   end
 end
 

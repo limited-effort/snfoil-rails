@@ -19,8 +19,8 @@ RSpec.describe SnFoil::Rails::API::Destroy do
     expect(including_class.ancestors).to include SnFoil::Rails::InjectRequestParams
   end
 
-  it 'includes ProcessContext' do
-    expect(including_class.ancestors).to include SnFoil::Rails::ProcessContext
+  it 'includes InjectRequestId' do
+    expect(including_class.ancestors).to include SnFoil::Rails::InjectRequestId
   end
 
   it 'sets up #destroy endpoint with #render_destroy as render method' do
@@ -37,14 +37,14 @@ RSpec.describe SnFoil::Rails::API::Destroy do
     expect(hooks).to include :inject_request_params
   end
 
+  it 'adds #inject_request_id at setup' do
+    hooks = including_class.snfoil_setup_destroy_hooks.pluck(:method)
+    expect(hooks).to include :inject_request_id
+  end
+
   it 'adds #inject_id at setup' do
     hooks = including_class.snfoil_setup_destroy_hooks.pluck(:method)
     expect(hooks).to include :inject_id
-  end
-
-  it 'adds #process_context at process' do
-    hooks = including_class.snfoil_process_destroy_hooks.pluck(:method)
-    expect(hooks).to include :process_context
   end
 end
 

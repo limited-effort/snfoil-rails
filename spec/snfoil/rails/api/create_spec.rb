@@ -23,8 +23,8 @@ RSpec.describe SnFoil::Rails::API::Create do
     expect(including_class.ancestors).to include SnFoil::Rails::InjectRequestParams
   end
 
-  it 'includes ProcessContext' do
-    expect(including_class.ancestors).to include SnFoil::Rails::ProcessContext
+  it 'includes InjectRequestId' do
+    expect(including_class.ancestors).to include SnFoil::Rails::InjectRequestId
   end
 
   it 'sets up #create endpoint with #render_create as render method' do
@@ -41,6 +41,11 @@ RSpec.describe SnFoil::Rails::API::Create do
     expect(hooks).to include :inject_request_params
   end
 
+  it 'adds #inject_request_id at setup' do
+    hooks = including_class.snfoil_setup_create_hooks.pluck(:method)
+    expect(hooks).to include :inject_request_id
+  end
+
   it 'adds #inject_deserialized at setup' do
     hooks = including_class.snfoil_setup_create_hooks.pluck(:method)
     expect(hooks).to include :inject_deserialized
@@ -49,11 +54,6 @@ RSpec.describe SnFoil::Rails::API::Create do
   it 'adds #inject_include at setup' do
     hooks = including_class.snfoil_setup_create_hooks.pluck(:method)
     expect(hooks).to include :inject_include
-  end
-
-  it 'adds #process_context at process' do
-    hooks = including_class.snfoil_process_create_hooks.pluck(:method)
-    expect(hooks).to include :process_context
   end
 end
 
