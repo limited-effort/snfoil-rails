@@ -1,0 +1,14 @@
+Description:
+    Creates a SnFoil::JsonapiSerializer Scaffold
+
+Arguments:
+    model: *required* The name of the model
+
+Options:
+    path: The path the files will be created at. default: app/jsonapi_serializers
+
+Example:
+    rails generate snfoil:jsonapi_serializer User
+
+    This will create:
+        app/jsonapi_serializers/user_jsonapi_serializer.rb

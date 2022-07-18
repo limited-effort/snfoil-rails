@@ -6,7 +6,7 @@ require:
 AllCops:
   NewCops: enable
   SuggestExtensions: false
-  TargetRubyVersion: 2.5.0
+  TargetRubyVersion: 2.7
 
 # ================ STYLE ===============
 Style/StringLiterals:
@@ -59,11 +59,19 @@ Naming/FileName:
 
 # ================ RSPEC ================
 
-RSpec/MultipleExpectations:
-  Max: 5
+RSpec/FilePath:
+  CustomTransform:
+    SnFoil: snfoil
+    CRUD: crud
+    API: api
+  Exclude:
+    - spec/snfoil/rails/api/concerns/*_spec.rb
 
-RSpec/NestedGroups:
+RSpec/MultipleExpectations:
   Max: 5
 
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5
