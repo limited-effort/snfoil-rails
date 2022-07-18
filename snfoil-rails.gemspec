@@ -42,8 +42,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec-rails', '~> 5.0'
   spec.add_development_dependency 'rubocop', '~> 1.29'
-  spec.add_development_dependency 'rubocop-performance', '~> 1.11'
-  spec.add_development_dependency 'rubocop-rails', '~> 2.11'
-  spec.add_development_dependency 'rubocop-rspec', '~> 2.4'
+  spec.add_development_dependency 'rubocop-performance', '~> 1.13'
+  spec.add_development_dependency 'rubocop-rails', '~> 2.14'
+  spec.add_development_dependency 'rubocop-rspec', '~> 2.10'
   spec.add_development_dependency 'sqlite3'
 end
