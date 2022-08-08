@@ -25,8 +25,8 @@ Gem::Specification.new do |spec|
   Dir.chdir(File.expand_path(__dir__)) { `git ls-files -z`.split("\x0").reject { |f| f.match(ignore_list) } }
 
   spec.add_dependency 'activesupport', '>= 5.2.6'
-  spec.add_dependency 'snfoil', '~> 1.0.0'
-  spec.add_dependency 'snfoil-controller', '>= 1.0.1'
+  spec.add_dependency 'snfoil', '>= 1.0.1', '< 2.0'
+  spec.add_dependency 'snfoil-controller', '>= 1.1.1', '< 2.0'
 
   spec.add_development_dependency 'blueprinter'
   spec.add_development_dependency 'bundle-audit', '~> 0.1.0'
@@ -41,9 +41,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rails', '~> 6.0'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec-rails', '~> 5.0'
-  spec.add_development_dependency 'rubocop', '~> 1.29'
-  spec.add_development_dependency 'rubocop-performance', '~> 1.13'
+  spec.add_development_dependency 'rubocop', '1.33'
+  spec.add_development_dependency 'rubocop-performance', '1.14.3'
   spec.add_development_dependency 'rubocop-rails', '~> 2.14'
-  spec.add_development_dependency 'rubocop-rspec', '~> 2.10'
+  spec.add_development_dependency 'rubocop-rspec', '2.12.1'
   spec.add_development_dependency 'sqlite3'
 end
