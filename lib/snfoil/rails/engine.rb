@@ -18,13 +18,20 @@ module SnFoil
   module Rails
     class Engine < ::Rails::Engine
       require 'snfoil'
-      require_relative 'searcher'
+      require 'snfoil/policy'
+      require 'snfoil/searcher'
+      require 'snfoil/context'
+      require 'snfoil/controller'
+      require 'snfoil/deserializer/json'
+      require 'snfoil/deserializer/jsonapi'
 
       require_relative 'api/create'
       require_relative 'api/destroy'
       require_relative 'api/index'
       require_relative 'api/show'
       require_relative 'api/update'
+
+      require_relative 'searcher'
       require_relative 'api_controller'
     end
   end
