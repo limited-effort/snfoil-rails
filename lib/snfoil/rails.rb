@@ -2,8 +2,6 @@
 
 module SnFoil
   module Rails
-    if Object.const_defined?(:Rails)
-      require 'snfoil/rails/engine'
-    end
+    require 'snfoil/rails/engine' if Object.const_defined?(:Rails)
   end
 end
