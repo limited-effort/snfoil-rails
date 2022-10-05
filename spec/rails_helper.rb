@@ -13,14 +13,11 @@ ActiveRecord::Migrator.migrations_paths = [File.expand_path('../spec/dummy/db/mi
 require 'rails/test_help'
 require 'rspec/rails'
 require 'database_cleaner/active_record'
-require 'oj'
 require 'kaminari'
 
 require 'snfoil/rails'
 
 RSpec.configure do |config|
-  Oj.mimic_JSON
-
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
