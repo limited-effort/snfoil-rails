@@ -1,7 +1,7 @@
 // For format details, see https://containers.dev/implementors/json_reference/.
 // For config options, see the README at: https://github.com/devcontainers/templates/tree/main/src/ruby
 {
-  "name": "snfoil-policy",
+  "name": "snfoil-rails",
   "dockerComposeFile": "../docker-compose.yaml",
   "service": "workspace",
   "workspaceFolder": "/workspace",
@@ -10,7 +10,6 @@
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {}
-
   },
 
 

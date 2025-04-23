@@ -7,7 +7,11 @@ RUN apt update && \
     build-essential \
     libyaml-dev \
     git \
-    curl
+    curl \
+    libjemalloc2 \
+    libvips \
+    pkg-config \
+    sqlite3
 
 WORKDIR /workspace
 

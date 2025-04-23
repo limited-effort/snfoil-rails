@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'blueprinter'
-
 class AnimalSerializer < Blueprinter::Base
   identifier :id
 

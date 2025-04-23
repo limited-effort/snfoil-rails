@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_24_014506) do
-
+ActiveRecord::Schema[7.2].define(version: 2025_04_23_223353) do
   create_table "animals", force: :cascade do |t|
     t.string "name"
     t.string "kingdom"
@@ -28,5 +27,4 @@ ActiveRecord::Schema.define(version: 2020_01_24_014506) do
   create_table "people", force: :cascade do |t|
     t.string "name"
   end
-
 end
