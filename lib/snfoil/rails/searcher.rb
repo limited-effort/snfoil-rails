@@ -48,7 +48,7 @@ module SnFoil
           @snfoil_order_by_direction = direction
         end
 
-        def distinct(bool = true) # rubocop:disable Style/OptionalBooleanParameter reason: class configuration looks better this way
+        def distinct(bool = true) # rubocop:disable Style/OptionalBooleanParameter --- reason: class configuration looks better this way
           @snfoil_is_distinct = bool
         end
 

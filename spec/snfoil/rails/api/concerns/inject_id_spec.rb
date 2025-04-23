@@ -26,7 +26,7 @@ RSpec.describe SnFoil::Rails::InjectId, type: :concern do
       let(:id) { SecureRandom.uuid }
 
       before do
-        including_class.define_method(:id) { return nil; }
+        including_class.define_method(:id) { nil }
         allow(including_class_instance).to receive(:id).and_return(id)
       end
 

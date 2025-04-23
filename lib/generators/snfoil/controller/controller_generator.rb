@@ -30,7 +30,7 @@ module SnFoil
     private
 
     def file_name
-      @file_name ||= if modules.length.zero?
+      @file_name ||= if modules.empty?
                        name
                      else
                        "#{modules.join('/')}/#{name}"
@@ -58,7 +58,7 @@ module SnFoil
     end
 
     def class_modules
-      return if modules.length.zero?
+      return if modules.empty?
 
       @class_modules ||= "#{modules.map(&:camelize).join('::')}::"
     end

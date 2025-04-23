@@ -1,4 +1,4 @@
-require:
+plugins:
   - rubocop-performance
   - rubocop-rails
   - rubocop-rspec
@@ -6,7 +6,7 @@ require:
 AllCops:
   NewCops: enable
   SuggestExtensions: false
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 3.0
 
 # ================ STYLE ===============
 Style/StringLiterals:
@@ -59,7 +59,7 @@ Naming/FileName:
 
 # ================ RSPEC ================
 
-RSpec/FilePath:
+RSpec/SpecFilePathFormat:
   CustomTransform:
     SnFoil: snfoil
     CRUD: crud
