@@ -17,22 +17,21 @@ gemspec
 # gem 'byebug', group: [:development, :test]
 
 group :development, :test do
-  gem 'activerecord-jdbcsqlite3-adapter', platform: :jruby
   gem 'blueprinter'
-  gem 'bundle-audit', '~> 0.1.0'
+  gem 'bundler-audit', '~> 0.9.0'
   gem 'database_cleaner-active_record'
+  gem 'debug', '~> 1.10'
   gem 'factory_bot', '~> 6.0'
-  gem 'fasterer', '~> 0.10.0'
-  gem 'jdbc-sqlite3', platform: :jruby
+  gem 'fasterer', '~> 0.11.0'
   gem 'kaminari'
   gem 'net-smtp'
-  gem 'pry-byebug', '~> 3.9', platform: :mri
   gem 'puma'
+  gem 'rails', '~> 7.0'
   gem 'rake', '~> 13.0'
-  gem 'rspec-rails', '~> 5.0'
-  gem 'rubocop', '1.33'
-  gem 'rubocop-performance', '1.14.3'
+  gem 'rspec-rails', '~> 7.0'
+  gem 'rubocop', '~> 1.75'
+  gem 'rubocop-performance', '~> 1.25'
   gem 'rubocop-rails', '~> 2.14'
-  gem 'rubocop-rspec', '2.12.1'
+  gem 'rubocop-rspec', '~> 3.6'
   gem 'sqlite3', platform: :mri
 end

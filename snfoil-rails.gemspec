@@ -6,13 +6,13 @@ Gem::Specification.new do |spec|
   spec.name          = 'snfoil-rails'
   spec.version       = SnFoil::Rails::VERSION
   spec.authors       = ['Matthew Howes', 'Danny Murphy', 'Cliff Campbell']
-  spec.email         = ['howeszy@gmail.com', 'dmurph24@gmail.com', 'cliffcampbell@hey.com']
+  spec.email         = ['matt.howes@limitedeffort.io', 'cliffcampbell@hey.com']
 
   spec.summary       = 'Snfoil Rails Helpers'
   spec.description   = 'Additional functionality gem for using SnFoil with Rails'
   spec.homepage      = 'https://github.com/limited-effort/snfoil-rails'
   spec.license       = 'Apache-2.0'
-  spec.required_ruby_version = '>= 2.6'
+  spec.required_ruby_version = '>= 3.0'
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = spec.homepage
@@ -31,8 +31,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'activesupport', '>= 5.2.6'
   spec.add_dependency 'snfoil', '>= 1.1.0', '< 2.0'
   spec.add_dependency 'snfoil-controller', '>= 1.1.1', '< 2.0'
-
-  spec.add_development_dependency 'puma'
-  spec.add_development_dependency 'rails', '~> 6.0'
-  spec.add_development_dependency 'rake', '~> 13.0'
 end

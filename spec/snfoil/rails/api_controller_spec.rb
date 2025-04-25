@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe SnFoil::Rails::APIController do
   it 'is a ActionControler::API' do
-    expect(described_class.new).to be_a_kind_of ActionController::API
+    expect(described_class.new).to be_a ActionController::API
   end
 
   it 'includes Create' do

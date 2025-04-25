@@ -42,7 +42,7 @@ module SnFoil
 
           def render_destroy(**options)
             if options[:object].errors.empty?
-              render json: {}, status: :no_content
+              render status: :no_content
             else
               render json: options[:object].errors, status: :unprocessable_entity
             end
