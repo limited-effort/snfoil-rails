@@ -24,6 +24,8 @@ module Snfoil
     class_option(:skip_model, desc: 'Skip Model Creation', type: :boolean, default: false)
 
     def add_model
+      return if options[:skip_model]
+
       rails_command "generate model #{call_args.join(' ')}", call_options
     end
 
