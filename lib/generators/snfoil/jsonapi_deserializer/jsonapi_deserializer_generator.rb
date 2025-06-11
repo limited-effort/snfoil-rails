@@ -15,7 +15,7 @@
 # limitations under the License.
 
 module SnFoil
-  class JsonapiDeserializerGenerator < Rails::Generators::Base
+  class JsonapiDeserializerGenerator < ::Rails::Generators::Base
     source_root File.expand_path('templates', __dir__)
 
     argument :model, type: :string

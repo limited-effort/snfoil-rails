@@ -15,7 +15,7 @@
 # limitations under the License.
 
 module SnFoil
-  class SearcherGenerator < Rails::Generators::Base
+  class SearcherGenerator < ::Rails::Generators::Base
     source_root File.expand_path('templates', __dir__)
 
     argument :model, type: :string
