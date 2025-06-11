@@ -15,7 +15,12 @@
 # limitations under the License.
 
 module SnFoil
-  class JsonapiSerializerGenerator < Rails::Generators::Base
+  class JsonapiSerializerGenerator < ::Rails::Generators::Base
+    def self.base_name
+      'snfoil'
+    end
+
+    namespace 'snfoil:jsonapi_serializer'
     source_root File.expand_path('templates', __dir__)
 
     argument :model, type: :string

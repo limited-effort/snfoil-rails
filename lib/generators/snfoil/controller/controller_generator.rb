@@ -15,7 +15,12 @@
 # limitations under the License.
 
 module SnFoil
-  class ControllerGenerator < Rails::Generators::Base
+  class ControllerGenerator < ::Rails::Generators::Base
+    def self.base_name
+      'snfoil'
+    end
+
+    namespace 'snfoil:controller'
     source_root File.expand_path('templates', __dir__)
 
     argument :model, type: :string

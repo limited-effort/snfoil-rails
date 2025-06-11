@@ -15,7 +15,12 @@
 # limitations under the License.
 
 module SnFoil
-  class AllGenerator < Rails::Generators::Base
+  class AllGenerator < ::Rails::Generators::Base
+    def self.base_name
+      'snfoil'
+    end
+
+    namespace 'snfoil:all'
     source_root File.expand_path('templates', __dir__)
 
     argument :model, type: :string
@@ -24,6 +29,8 @@ module SnFoil
     class_option(:skip_model, desc: 'Skip Model Creation', type: :boolean, default: false)
 
     def add_model
+      return if options[:skip_model]
+
       rails_command "generate model #{call_args.join(' ')}", call_options
     end
 
