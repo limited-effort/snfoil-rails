@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-module SnFoil
+module Snfoil
   class JsonapiSerializerGenerator < ::Rails::Generators::Base
     source_root File.expand_path('templates', __dir__)
 
