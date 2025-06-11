@@ -14,8 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-module Snfoil
+module SnFoil
   class ContextGenerator < ::Rails::Generators::Base
+    def self.base_name
+      'snfoil'
+    end
+
+    namespace 'snfoil:context'
     source_root File.expand_path('templates', __dir__)
 
     argument :model, type: :string
