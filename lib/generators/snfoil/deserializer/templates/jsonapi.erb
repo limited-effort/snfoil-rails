@@ -1,0 +1,15 @@
+# frozen_string_literal: true
+
+class <%= class_modules %><%= class_name %>Deserializer
+  include SnFoil::Deserializer::JSONAPI
+
+  # Underline the keys in the payload
+  key_transform :underscore
+  
+  # Add attributes of the model you want to serializer with the following syntax
+  attributes :id
+
+  # Add relationships with the following syntax
+  # belongs_to :store, serializer: StoreSerializer
+  # has_many :locations, serializer: LocationSerializer
+end

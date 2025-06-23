@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Copyright 2021 Matthew Howes
+# Copyright 2025 Matthew Howes
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,17 +15,17 @@
 # limitations under the License.
 
 module SnFoil
-  class JsonapiSerializerGenerator < ::Rails::Generators::Base
+  class SerializerGenerator < ::Rails::Generators::Base
     def self.base_name
       'snfoil'
     end
 
-    namespace 'snfoil:jsonapi_serializer'
+    namespace 'snfoil:serializer'
     source_root File.expand_path('templates', __dir__)
 
     argument :model, type: :string
 
-    class_option :path, desc: 'Base path for file', type: :string, default: 'app/jsonapi_serializers'
+    class_option :path, desc: 'Base path for file', type: :string, default: 'app/serializers'
 
     def add_app_file
       file_name = if modules.empty?
@@ -34,7 +34,7 @@ module SnFoil
                     "#{modules.join('/')}/#{name}"
                   end
 
-      template('jsonapi_serializer.erb', "#{options[:path]}/#{file_name}_jsonapi_serializer.rb")
+      template('serializer.erb', "#{options[:path]}/#{file_name}_serializer.rb")
     end
 
     private

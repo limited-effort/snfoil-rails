@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class <%= class_modules %><%= class_name %>Controller < SnFoil::Controller::Base
-  context <%= name.singularize.camelcase %>Context
-  serializer <%= name.singularize.camelcase %>JsonapiSerializer
-  deserializer <%= name.singularize.camelcase %>JsonapiDeserializer
+class <%= class_modules %><%= class_name %>Controller < SnFoil::Rails::APIController
+  context <%= class_name.singularize %>Context
+  serializer <%= class_name.singularize %>Serializer
+  deserializer <%= class_name.singularize %>Deserializer
 
   # SnFoil::Controller requires current_entity or current_user defined to properly scope
   # all queries, otherwise data leaks could occur

@@ -1,0 +1,18 @@
+# frozen_string_literal: true
+
+class <%= class_modules %><%= class_name %>Serializer
+  # SnFoil no longer ships with a serializer, it is recommended to use your favorite and implement
+  # the serialize method in your controller.
+  # 
+  # example: Blueprinter
+  # class <%= class_modules %><%= class_name %>Serializer < Blueprinter::Base
+  #   identifier :id
+  #   fields :name, :description, :created_at, :updated_at
+  # end
+  #
+  # example: Alba
+  # class <%= class_modules %><%= class_name %>Serializer
+  #   include Alba::Resource
+  #   attributes :id, :name, :description, :created_at, :updated_at
+  # end
+end
