@@ -46,11 +46,11 @@ module SnFoil
 
     def template_name
       @template_name ||= if options[:type] == 'json'
-                            'json.erb' 
+                           'json.erb'
                          elsif options[:type] == 'jsonapi'
-                            'jsonapi.erb'
+                           'jsonapi.erb'
                          else
-                            raise ArgumentError, "Unknown deserializer type: #{options[:type]}"
+                           raise ArgumentError, "Unknown deserializer type: #{options[:type]}"
                          end
     end
 
