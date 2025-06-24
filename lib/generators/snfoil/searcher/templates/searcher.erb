@@ -4,4 +4,8 @@ class <%= class_modules %><%= class_name %>Searcher
   include SnFoil::Searcher
   
   model <%= class_name.singularize %>
+
+  # filter do |scope, params|
+  #   scope.where(archived_at: nil)
+  # end
 end

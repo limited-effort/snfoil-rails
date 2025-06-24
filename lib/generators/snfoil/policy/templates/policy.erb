@@ -2,21 +2,18 @@
 
 class <%= class_modules %><%= class_name %>Policy
   include SnFoil::Policy
-  # A SnFoil::Policy is just a Pundit policy (https://github.com/varvet/pundit)
-  # with some defaults
-  # Available methods: show?, create?, update?, destroy?, index?, associate?
 
-  #  def show?
-  #    true
-  #  end
+  # Example policy for <%= class_name %> entity.
+  # permission :create?, with: :active_and_owner?
 
-  # class Scope
-  #   # available read-only attributes
-  #   # - scope: the default scope passed into the policy (ex: an ActiveRecord::Relation)
-  #   # - entity: the object that the scope is build around (ex: a User)
+  # permission :update?, with: :active_and_owner?
 
-  #   def resolve
-  #     # the new default scope
-  #   end
+  # permission :destroy? do
+  #   entity.archived_at.nil? &&
+  #     (record.user_id == entity.id || entity.is_admin?)
+  # end
+
+  # def active_and_owner?
+  #   entity.archived_at.nil? && record.user_id == entity.id
   # end
 end

@@ -1,9 +1,23 @@
 # frozen_string_literal: true
 
 class <%= class_modules %><%= class_name %>Context
-  include SnFoil::Context
+  include SnFoil::CRUD::Context
 
   model <%= class_name %>
   searcher <%= class_name.pluralize %>Searcher
   policy <%= class_name %>Policy
+
+  # #create #update #destroy #show #index are already defined by SnFoil::CRUD::Context
+  # you can override their behavior by editing their hooks.  Example:
+  # after_create do |options|
+  #   # do something after create
+  #   options # return options in hooks
+  # end
+  #
+  # or you can define your own workflows
+  # action :expire do |options|
+  #   # expire the object
+  #
+  #   options
+  # end
 end

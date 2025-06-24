@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Copyright 2021 Matthew Howes
+# Copyright 2025 Matthew Howes
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,6 +16,6 @@
 
 module SnFoil
   module Rails
-    VERSION = '1.1.2'
+    VERSION = '1.1.3'
   end
 end
