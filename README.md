@@ -147,7 +147,7 @@ The default order direction you want the results to be return in.  This can be o
 
 ```ruby 
 class PeopleSearcher
-  include SnFoil::Searcher
+  include SnFoil::Rails::Searcher
 
   model Person
   order :ASC
@@ -160,7 +160,7 @@ The model attribute you want to order by. This can be overridden by including `o
 
 ```ruby 
 class PeopleSearcher
-  include SnFoil::Searcher
+  include SnFoil::Rails::Searcher
 
   model Person
   order_by :last_name
@@ -172,7 +172,7 @@ Whether or not to call ActiveRecord's `.distinct` on the results of the query.  
 
 ```ruby 
 class PeopleSearcher
-  include SnFoil::Searcher
+  include SnFoil::Rails::Searcher
 
   model Person
   distinct false
@@ -185,7 +185,7 @@ A shorthand for adding ActiveRecord's `.include` to the to the query.
 
 ```ruby 
 class PeopleSearcher
-  include SnFoil::Searcher
+  include SnFoil::Rails::Searcher
 
   model Person
   includes :address,
