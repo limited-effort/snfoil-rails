@@ -21,6 +21,7 @@ module SnFoil
   module Rails
     module Searcher
       extend ActiveSupport::Concern
+
       ASC = 'ASC'
       DESC = 'DESC'
 

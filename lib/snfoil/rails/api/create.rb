@@ -46,7 +46,7 @@ module SnFoil
             if options[:object].errors.empty?
               render json: serialize(options[:object], **options), status: :created
             else
-              render json: options[:object].errors, status: :unprocessable_entity
+              render json: options[:object].errors, status: :unprocessable_content
             end
           end
         end

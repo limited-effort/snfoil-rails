@@ -12,8 +12,18 @@
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
 
+  "mounts": [
+    "source=${localEnv:HOME}/.claude,target=/root/.claude,type=bind",
+    "source=${localEnv:HOME}/.claude.json,target=/root/.claude.json,type=bind"
+  ],
+
+  "containerEnv": {
+    "DEVCONTAINER": "true",
+    "CLAUDE_CONFIG_DIR": "/root/.claude"
+  },
 
   "remoteEnv": {
+    "EDITOR": "code --wait",
     "PATH":"${containerEnv:PATH}:/workspace/bin"
   },
 
@@ -24,6 +34,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "anthropic.claude-code",
         "Shopify.ruby-lsp"
       ]
     }

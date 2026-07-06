@@ -38,7 +38,7 @@ RSpec.describe SnFoil::Rails::Searcher do
       end
 
       it 'distincts the query' do
-        expect(query).to match(/DISTINCT/)
+        expect(query).to include('DISTINCT')
       end
     end
 
@@ -52,7 +52,7 @@ RSpec.describe SnFoil::Rails::Searcher do
       end
 
       it 'distincts the query' do
-        expect(query).to match(/DISTINCT/)
+        expect(query).to include('DISTINCT')
       end
     end
 
@@ -62,7 +62,7 @@ RSpec.describe SnFoil::Rails::Searcher do
       end
 
       it 'doesn\'t distinct the query' do
-        expect(query).not_to match(/distinct/)
+        expect(query).not_to include('distinct')
       end
     end
   end
@@ -314,7 +314,7 @@ RSpec.describe SnFoil::Rails::Searcher do
     end
 
     it 'applies distinct' do
-      expect(query).to match(/DISTINCT/)
+      expect(query).to include('DISTINCT')
     end
   end
 end
