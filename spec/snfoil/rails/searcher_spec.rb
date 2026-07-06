@@ -138,6 +138,16 @@ RSpec.describe SnFoil::Rails::Searcher do
         expect(canary.sing[1][:data]).to eq :order_method
       end
     end
+
+    context 'with args[0] => direction value' do
+      before do
+        searcher.order(:desc)
+      end
+
+      it 'sets the order direction value' do
+        expect(instance.order).to eq 'DESC'
+      end
+    end
   end
 
   describe '#self.order_by' do
@@ -265,6 +275,24 @@ RSpec.describe SnFoil::Rails::Searcher do
             expect(instance.order(order: :fake)).to eq 'DESC'
           end
         end
+      end
+    end
+
+    context 'when set by #self.order' do
+      before do
+        searcher.order(:desc)
+      end
+
+      it 'uses the direction set in #self.order' do
+        expect(instance.order).to eq 'DESC'
+      end
+
+      it 'uses args[:order] when the param is a valid direction' do
+        expect(instance.order(order: :asc)).to eq 'ASC'
+      end
+
+      it 'uses #self.order direction when the param is invalid' do
+        expect(instance.order(order: :fake)).to eq 'DESC'
       end
     end
   end
