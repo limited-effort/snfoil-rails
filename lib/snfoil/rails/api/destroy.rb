@@ -44,7 +44,7 @@ module SnFoil
             if options[:object].errors.empty?
               render status: :no_content
             else
-              render json: options[:object].errors, status: :unprocessable_entity
+              render json: options[:object].errors, status: :unprocessable_content
             end
           end
         end
