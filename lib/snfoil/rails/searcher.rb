@@ -21,6 +21,7 @@ module SnFoil
   module Rails
     module Searcher
       extend ActiveSupport::Concern
+
       ASC = 'ASC'
       DESC = 'DESC'
 
@@ -39,6 +40,13 @@ module SnFoil
                     :snfoil_order_by_attr, :snfoil_order_by_direction, :snfoil_is_distinct
 
         def order(method = nil, &block)
+          if block.nil? && [ASC, DESC].include?(method.to_s.upcase)
+            @snfoil_order_by_direction = method.to_s.upcase
+            @snfoil_order_method = nil
+            @snfoil_order_block = nil
+            return
+          end
+
           @snfoil_order_method = method
           @snfoil_order_block = block
         end
