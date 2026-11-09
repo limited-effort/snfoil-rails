@@ -43,20 +43,20 @@ module SnFoil
         options[:object].count if options[:object].respond_to? :count
       end
 
-      def pagination_pages(**options)
-        count = pagination_count(**options)
-        per_page = pagination_per_page(**options)
+      def pagination_pages(**)
+        count = pagination_count(**)
+        per_page = pagination_per_page(**)
         return unless count && per_page
 
         (count.to_f / per_page).ceil.to_i
       end
 
-      def pagination_meta(**options)
+      def pagination_meta(**)
         {
-          page: pagination_page(**options),
-          pages: pagination_pages(**options),
-          total: pagination_count(**options),
-          per: pagination_per_page(**options)
+          page: pagination_page(**),
+          pages: pagination_pages(**),
+          total: pagination_count(**),
+          per: pagination_per_page(**)
         }
       end
 

@@ -1,14 +1,15 @@
 Description:
-    Creates a SnFoil::JsonapiDeSerializer Scaffold
+    Creates a SnFoil::Deserializer Scaffold
 
 Arguments:
     model: *required* The name of the model
 
 Options:
-    path: The path the files will be created at. default: app/jsonapi_deserializers
+    path: The path the files will be created at. default: app/deserializers
+    type: The type of deserializer to create (json, jsonapi). default: json
 
 Example:
-    rails generate snfoil:jsonapi_deserializer User
+    rails generate snfoil:deserializer User
 
     This will create:
-        app/jsonapi_deserializers/user_jsonapi_deserializer.rb
+        app/deserializers/user_deserializer.rb

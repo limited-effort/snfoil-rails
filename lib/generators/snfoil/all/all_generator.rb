@@ -25,7 +25,7 @@ module SnFoil
 
     argument :model, type: :string
 
-    class_option(:type, desc: 'Generate Base or API', type: :string, default: 'base')
+    class_option(:type, desc: 'Deprecated, has no effect: controllers inherit from SnFoil::Rails::APIController', type: :string)
     class_option(:skip_model, desc: 'Skip Model Creation', type: :boolean, default: false)
 
     def add_model
@@ -46,12 +46,12 @@ module SnFoil
       rails_command "generate snfoil:context #{call_args.join(' ')}", call_options
     end
 
-    def add_jsonapi_serializer
-      rails_command "generate snfoil:jsonapi_serializer #{call_args.join(' ')}", call_options
+    def add_serializer
+      rails_command "generate snfoil:serializer #{call_args.join(' ')}", call_options
     end
 
-    def add_jsonapi_deserializer
-      rails_command "generate snfoil:jsonapi_deserializer #{call_args.join(' ')}", call_options
+    def add_deserializer
+      rails_command "generate snfoil:deserializer #{call_args.join(' ')}", call_options
     end
 
     def add_controller

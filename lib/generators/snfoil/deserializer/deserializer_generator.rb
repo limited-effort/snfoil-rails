@@ -35,7 +35,7 @@ module SnFoil
                     "#{modules.join('/')}/#{name}"
                   end
 
-      template('deserializer.erb', "#{options[:path]}/#{file_name}_deserializer.rb")
+      template(template_name, "#{options[:path]}/#{file_name}_deserializer.rb")
     end
 
     private

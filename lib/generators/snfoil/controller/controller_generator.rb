@@ -25,11 +25,11 @@ module SnFoil
 
     argument :model, type: :string
 
-    class_option :type, desc: 'Generate Base or API', type: :string, default: 'base'
+    class_option :type, desc: 'Deprecated, has no effect: controllers inherit from SnFoil::Rails::APIController', type: :string
     class_option :path, desc: 'Base path for file', type: :string, default: 'app/controllers'
 
     def add_app_file
-      template(template_name, "#{options[:path]}/#{file_name}_controller.rb")
+      template('controller.erb', "#{options[:path]}/#{file_name}_controller.rb")
     end
 
     private
@@ -40,14 +40,6 @@ module SnFoil
                      else
                        "#{modules.join('/')}/#{name}"
                      end
-    end
-
-    def template_name
-      @template_name ||= if options[:type] == 'api'
-                           'api_controller.erb'
-                         else
-                           'controller.erb'
-                         end
     end
 
     def name
