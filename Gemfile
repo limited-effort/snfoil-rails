@@ -26,7 +26,7 @@ group :development, :test do
   gem 'kaminari'
   gem 'net-smtp'
   gem 'puma'
-  gem 'rails', '~> 7.0'
+  gem 'rails', '~> 8.0.5', '>= 8.0.5.2'
   gem 'rake', '~> 13.0'
   gem 'rspec-rails', '~> 7.0'
   gem 'rubocop', '~> 1.75'
