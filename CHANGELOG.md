@@ -31,7 +31,6 @@
 
 - `SnFoil::Rails::API::Destroy#render_destroy` responds to a successful destroy with `render status: :no_content` instead of `render json: {}, status: :no_content`. In a controller that inherits from `ActionController::Base` (rather than `ActionController::API`), this looks up a `destroy` template and raises `ActionView::MissingTemplate`. Override `render_destroy` to call `head :no_content` in that case.
 - Require Ruby 3.0 or newer (previously 2.6).
-- Development now runs in a Docker dev container on Ruby 3.4, with updated tooling (RuboCop 1.75, bundler-audit 0.9, `debug` in place of `pry-byebug`).
 
 ## [0.1.0] - 2021-09-26
 
