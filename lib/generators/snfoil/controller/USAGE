@@ -1,12 +1,11 @@
 Description:
-    Creates a SnFoil::Controller Scaffold
+    Creates a SnFoil::Rails::APIController Scaffold
 
 Arguments:
     model: *required* The name of the model
 
 Options:
     path: The path the files will be created at. default: app/controllers
-    type: The type of controller to create (base, api). default: base
 
 Example:
     rails generate snfoil:controller User
