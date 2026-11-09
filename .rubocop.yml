@@ -67,6 +67,10 @@ RSpec/SpecFilePathFormat:
   Exclude:
     - spec/snfoil/rails/api/concerns/*_spec.rb
 
+RSpec/Output:
+  Exclude:
+    - spec/dummy/bin/*
+
 RSpec/MultipleExpectations:
   Max: 5
 
