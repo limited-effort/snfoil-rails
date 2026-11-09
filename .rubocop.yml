@@ -6,7 +6,7 @@ plugins:
 AllCops:
   NewCops: enable
   SuggestExtensions: false
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3.3
 
 # ================ STYLE ===============
 Style/StringLiterals:
