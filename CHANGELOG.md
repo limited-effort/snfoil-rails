@@ -1,11 +1,21 @@
 ## [Unreleased]
 
+### Changed
+
+- Require Ruby 3.3 or newer (previously 3.0).
+
+### Fixed
+
+- `snfoil:deserializer` generates a deserializer. It looked for a `deserializer.erb` template that doesn't exist and failed. It now uses the JSON or JSONAPI template chosen by `--type` (default `json`).
+- `snfoil:all` runs `snfoil:serializer` and `snfoil:deserializer`. It still called the removed `snfoil:jsonapi_serializer` and `snfoil:jsonapi_deserializer` generators.
+- `snfoil:controller --type api` generates a controller. It looked for the removed `api_controller.erb` template and failed. Every controller now inherits from `SnFoil::Rails::APIController`, so `--type` has no effect.
+
 ## [1.1.4] - 2025-07-11
 
 ### Added
 
 - `snfoil:serializer` generator, which scaffolds a plain serializer class with Blueprinter and Alba examples, since SnFoil no longer ships a serializer.
-- `snfoil:deserializer` generator.
+- `snfoil:deserializer` generator. It doesn't work in this release (see Known issues).
 
 ### Changed
 
@@ -17,6 +27,14 @@
 ### Removed
 
 - `snfoil:jsonapi_serializer` and `snfoil:jsonapi_deserializer` generators, replaced by `snfoil:serializer` and `snfoil:deserializer`.
+
+### Known issues
+
+- `snfoil:deserializer` fails because its `deserializer.erb` template is missing.
+- `snfoil:all` fails because it still calls the removed `snfoil:jsonapi_serializer` and `snfoil:jsonapi_deserializer` generators.
+- `snfoil:controller --type api` fails because its `api_controller.erb` template was removed.
+
+All three are fixed in Unreleased.
 
 ## [1.1.2] - 2025-06-11
 
