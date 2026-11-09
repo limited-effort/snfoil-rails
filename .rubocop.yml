@@ -6,7 +6,7 @@ plugins:
 AllCops:
   NewCops: enable
   SuggestExtensions: false
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3.3
 
 # ================ STYLE ===============
 Style/StringLiterals:
@@ -66,6 +66,10 @@ RSpec/SpecFilePathFormat:
     API: api
   Exclude:
     - spec/snfoil/rails/api/concerns/*_spec.rb
+
+RSpec/Output:
+  Exclude:
+    - spec/dummy/bin/*
 
 RSpec/MultipleExpectations:
   Max: 5

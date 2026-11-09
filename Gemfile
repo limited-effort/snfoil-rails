@@ -26,12 +26,12 @@ group :development, :test do
   gem 'kaminari'
   gem 'net-smtp'
   gem 'puma'
-  gem 'rails', '~> 7.0'
+  gem 'rails', '~> 8.0.5', '>= 8.0.5.2'
   gem 'rake', '~> 13.0'
   gem 'rspec-rails', '~> 7.0'
-  gem 'rubocop', '~> 1.75'
+  gem 'rubocop', '~> 1.81'
   gem 'rubocop-performance', '~> 1.25'
-  gem 'rubocop-rails', '~> 2.14'
-  gem 'rubocop-rspec', '~> 3.6'
+  gem 'rubocop-rails', '~> 2.30'
+  gem 'rubocop-rspec', '~> 3.9'
   gem 'sqlite3', platform: :mri
 end
